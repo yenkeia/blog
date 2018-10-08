@@ -1,0 +1,19 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "impyq"
+theme = "hugo-xmin"
+
+[permalinks]
+    post = "/post/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "主页"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 2
+
+[params]
+    footer = "Copyright &copy; 2018 impyq | Power by [Hugo](https://gohugo.io/) Theme [XMin](https://xmin.yihui.name/)"

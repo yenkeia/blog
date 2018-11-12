@@ -3,6 +3,9 @@ title: "Java核心技术36讲 学习笔记"
 date: 2018-11-12T23:13:20+08:00
 tags:
   - 学习笔记
+  - Java
+categories:
+  - 编程
 ---
 
 ### 1.谈谈你对 Java 平台的理解

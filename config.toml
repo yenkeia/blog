@@ -1,23 +1,29 @@
 baseURL = "/"
 languageCode = "en-us"
 title = "impyq"
-theme = "hugo-xmin"
-
-[permalinks]
-    post = "/post/:year/:month/:day/:slug/"
+theme = "hugo-paper"
+summaryLength = 10
+defaultContentLanguage = "zh"
 
 [[menu.main]]
     name = "主页"
     url = "/"
     weight = 1
 [[menu.main]]
-    name = "Tags"
+    name = "标签"
     url = "/tags/"
     weight = 2
+[[menu.main]]
+    name = "分类"
+    url = "/categories/"
+    weight = 2
 
-[params]
-    footer = "Copyright &copy; 2018 impyq | Power by [Hugo](https://gohugo.io/) Theme [XMin](https://xmin.yihui.name/)"
+[permalinks]
+    post = "/post/:year/:month/:day/:title/"
 
 [taxonomies]
    tag = "tags"
    category = "categories"
+
+[params]
+    summary_length = 30

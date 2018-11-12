@@ -32,6 +32,7 @@ categories:
 - finalize 对象在被垃圾收集前调用，容易导致拖慢垃圾收集造成 OOM，在 JDK 9 中标记为 deprecated
 
 ### 4. 强引用、软引用、弱引用、幻象引用
+test
 
 ### 5. String、StringBuffer、StringBuilder
 

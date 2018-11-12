@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "impyq"
 theme = "hugo-paper"
 summaryLength = 10
-defaultContentLanguage = "zh"
 
 [[menu.main]]
     name = "主页"

@@ -1,6 +1,6 @@
 // npm install node-github-webhook --save
 var http = require('http')
-var config = require('secret.json')
+var config = require('./secret.json')
 var createHandler = require('node-github-webhook')
 var handler = createHandler({ path: '/bloghook', secret: config.appSecret }) // single handler
 function execFunc (content) {

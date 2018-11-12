@@ -17,3 +17,7 @@ theme = "hugo-xmin"
 
 [params]
     footer = "Copyright &copy; 2018 impyq | Power by [Hugo](https://gohugo.io/) Theme [XMin](https://xmin.yihui.name/)"
+
+[taxonomies]
+   tag = "tags"
+   category = "categories"

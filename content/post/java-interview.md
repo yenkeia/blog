@@ -1,11 +1,10 @@
 ---
-title: "Java核心技术36讲 学习笔记"
+title: "Java核心技术36讲笔记(1-20)"
 date: 2018-11-12T23:13:20+08:00
 tags:
-  - 学习笔记
   - Java
 categories:
-  - 编程
+  - 学习笔记
 ---
 
 ### 1.谈谈你对 Java 平台的理解
@@ -61,3 +60,23 @@ categories:
 ### 9. Hashtable、HashMap、TreeMap
 
 ### 10. 如何保证集合是线性安全的；ConcurrentHashMap 如何实现高效的线程安全
+
+### 11. Java IO 方式；NIO 如何实现多路复用
+
+### 12. Java 有几种文件拷贝方式；哪种最高效
+
+### 13. 接口和抽象类的区别
+
+### 14. 设计模式
+
+### 15. synchronized、ReentranLock
+
+### 16. synchronized 底层实现；锁的升级、降级
+
+### 17. 一个线程两次调用 start() 方法会出现什么情况
+
+### 18. 什么情况下 Java 程序会产生死锁；如何定位、修复
+
+### 19. Java 并发包提供了哪些并发工具类
+
+### 20. 并发包中 ConcurrentLinkedQueue 和 LinkedBlockingQueue 区别

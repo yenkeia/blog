@@ -50,12 +50,64 @@ categories:
 - 幻象引用：`get()` 永远返回 `null`
 
 ### 5. String、StringBuffer、StringBuilder
+- 通过 `new` 方法创建的 `String` 对象是不检查字符串池的，而是直接在堆区或栈区创建一个新的对象，也不会把对象放入池中
+```java
+  String str1 = "123";              //通过直接量赋值方式，放入字符串常量池
+  String str2 = new String("123");  //通过 new 方式赋值方式，不放入字符串常量池
+```
+- `String` 被声明成 `final class`，所有属性也是 `final` 的，它的不可变性，类似拼接、裁剪字符串等动作，都会产生新的 `String` 对象
+- `StringBuffer` 和 `StringBuilder` 都实现了 `AbstractStringBuilder` 抽象类，拥有几乎一致对外提供的调用接口；其底层在内存中的存储方式与 `String` 相同，都是以一个有序的数组（`char` 类型的数组，JDK 9 以后是 `byte` 数组）进行存储
+- 两者对象在构造过程中，首先按照默认大小申请一个字符数组，由于会不断加入新数据，当超过默认大小后，会创建一个更大的数组，并将原先的数组内容复制过来，再丢弃旧的数组。因此，对于较大对象的扩容会涉及大量的内存复制操作，如果能够预先评估大小，可提升性能。
+- `StringBuilder` 不是线程安全的
+- `StringBuffer` 类中方法定义前面都会有 `synchronize` 关键字，线程安全
 
 ### 6. 动态代理是基于什么原理
+- 反射: 程序在运行时*自省*（introspect）的能力
+- 静态代理：事先写好代理类，可以手工编写，也可以用工具生成。缺点是每个业务类都要对应一个代理类，非常不灵活
+- 动态代理：运行时自动生成代理对象。缺点是生成代理代理对象和调用代理方法都要额外花费时间
+  - JDK 动态代理：基于 Java 反射机制实现，必须要实现了接口的业务类才能用这种办法生成代理对象
+  - cglib 动态代理：基于 ASM（字节码操作）机制实现，通过生成业务类的子类作为代理类
+```java
+// JDK 动态代理
+public class MyDynamicProxy {
+    public static void main(String[] args) {
+        HelloImpl helloImpl = new HelloImpl();  
+        MyInvocationHandler handler = new MyInvocationHandler(helloImpl); 
+        // 为被调用目标构建代理对象
+        Hello proxyHello = (Hello) Proxy.newProxyInstance(HelloImpl.class.getClassLoader(), HelloImpl.class.getInterfaces(), handler);
+        // 调用代理方法
+        proxyHello.sayHello();
+    }
+}
+interface Hello { void sayHello(); }  // 纽带作用
+class HelloImpl implements Hello {    // 被调用目标
+    @Override
+    public void sayHello() { System.out.println("Hello World"); }
+}
+class MyInvocationHandler implements InvocationHandler {
+    private Object target;
+    public MyInvocationHandler(Object target) { this.target = target; }
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("这里是代理插入的额外逻辑");
+        Object result = method.invoke(target, args);
+        return result;
+    }
+}
+// 输出:
+// 这里是代理插入的额外逻辑
+// Hello World
+```  
 
 ### 7. int、Integer
 
 ### 8. Vector、ArrayList、LinkedList
+- 都是有序集合
+- ArrayList: 非线程安全的动态数组，扩容时空间增加 50%
+- Vector: 是基于 `synchronized` 实现的线程安全的 `ArrayList` ，动态扩容时空间提高一倍
+- 数组适合随机访问场合；除了尾部插入和删除元素，性能较差（往中间插入元素需移动后续所有元素
+- 查找元素时需要遍历数组，对于非 `null` 元素采取 `equals` 方式寻找；扩容过程调用系统底层 `System.arraycopy()` 进行数组复制；缩小数组容量调用 `trimToSize()` 方法
+- LinkedList: 非线程安全的双向链表，删除插入元素快，随机访问慢
 
 ### 9. Hashtable、HashMap、TreeMap
 

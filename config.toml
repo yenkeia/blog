@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "impyq"
 theme = "hugo-paper"
 summaryLength = 10
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
 
 [[menu.main]]
     name = "主页"

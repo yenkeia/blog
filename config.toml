@@ -11,9 +11,9 @@ hasCJKLanguage = true
 paginate = 3
 copyright = "impyq"
 
-defaultContentLanguage = "en"
-[languages.en]
-  languageCode = "en"
+defaultContentLanguage = "zh-cn"
+[languages.zh-cn]
+  languageCode = "zh-cn"
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true
@@ -41,6 +41,11 @@ pygmentsUseClasses = true
   weight = 30
   identifier = "categories"
   url = "/categories/"
+[[menu.main]]
+  name = "随手记"
+  weight = 40
+  identifier = "notes"
+  url = "/notes/"
 
 [params]
   since = "2018"

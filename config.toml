@@ -1,7 +1,7 @@
 baseURL = "/"
 languageCode = "en-us"
 title = "impyq"
-theme = "hugo-paper"
+theme = "jane"
 summaryLength = 10
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"

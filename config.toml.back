@@ -1,0 +1,31 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "impyq"
+theme = "jane"
+summaryLength = 10
+PygmentsCodeFences = true
+PygmentsStyle = "monokai"
+pygmentsoptions = "linenos=table"
+
+[[menu.main]]
+    name = "主页"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 2
+[[menu.main]]
+    name = "分类"
+    url = "/categories/"
+    weight = 2
+
+[permalinks]
+    post = "/post/:year/:month/:day/:title/"
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+
+[params]
+    summary_length = 30

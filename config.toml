@@ -5,6 +5,7 @@ theme = "hugo-paper"
 summaryLength = 10
 PygmentsCodeFences = true
 PygmentsStyle = "monokai"
+pygmentsoptions = "linenos=table"
 
 [[menu.main]]
     name = "主页"
@@ -23,8 +24,8 @@ PygmentsStyle = "monokai"
     post = "/post/:year/:month/:day/:title/"
 
 [taxonomies]
-   tag = "tags"
-   category = "categories"
+    tag = "tags"
+    category = "categories"
 
 [params]
     summary_length = 30

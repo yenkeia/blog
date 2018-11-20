@@ -1,3 +1,10 @@
+# supervisor
+- `reread` - Reread supervisor configuration. Do not update or restart the running services.
+- `update` - Restart service(s) whose configuration has changed. Usually run after 'reread'.
+- `reload` - Reread supervisor configuration, reload supervisord and supervisorctl, restart services that were started.
+- `restart` - Restart service(s)
+- https://github.com/Supervisor/supervisor/issues/720
+
 # maven
 - mvn clean package -Dmaven.test.skip=true 清理并打包并跳过测试
 

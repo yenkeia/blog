@@ -1,3 +1,10 @@
+# maven
+- mvn clean package -Dmaven.test.skip=true 清理并打包并跳过测试
+
+# tar
+- `tar -xvzf xxx.tar.gz`
+- `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
+
 # vim
 - TAB替换为空格：
     - :set ts=4
@@ -20,6 +27,7 @@ locale-gen en_US.UTF-8
 - MacOS: `find . -type f -name "*.js" -exec sed -i '' -e 's/想要替换的文本/替换成的文本/g' {} +`
 - Linux: `find . -type f -name "*.js" -exec sed -i 's/想要替换的文本/替换成的文本/g' {} +`
 - `find . -name "*.java" -exec grep "文本" -Hn {} \;`
+- `find . -name "*.log" -exec rm -rfv {} +`
 
 # tmux
 - tmux ls

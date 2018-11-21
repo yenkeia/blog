@@ -1,3 +1,19 @@
+# ubuntu 18.04 阿里源
+```
+/etc/apt/sources.list
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+```
+
 # supervisor
 - `reread` - Reread supervisor configuration. Do not update or restart the running services.
 - `update` - Restart service(s) whose configuration has changed. Usually run after 'reread'.
@@ -11,15 +27,6 @@
 # tar
 - `tar -xvzf xxx.tar.gz`
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
-
-# vim
-- TAB替换为空格：
-    - :set ts=4
-    - :set expandtab
-
-- 空格替换为TAB：
-    - :set ts=4
-    - :set noexpandtab
 
 # linux
 ```
@@ -59,3 +66,59 @@ locale-gen en_US.UTF-8
 
 # idea
 option command + V  生成返回值
+option command + T  对选中的代码（行）进行（try-catch等）操作
+
+
+# vim
+- TAB替换为空格：
+    - :set ts=4
+    - :set expandtab
+
+- 空格替换为TAB：
+    - :set ts=4
+    - :set noexpandtab
+
+```
+set nocompatible
+syntax on                  " Enable syntax highlighting.
+
+set autoindent             " Indent according to previous line.
+set expandtab              " Use spaces instead of tabs.
+set softtabstop =4         " Tab key indents by 4 spaces.
+set shiftwidth  =4         " >> indents by 4 spaces.
+set shiftround             " >> indents to next multiple of 'shiftwidth'.
+
+set backspace   =indent,eol,start  " Make backspace work as you would expect.
+set hidden                 " Switch between buffers without having to save first.
+set laststatus  =2         " Always show statusline.
+set display     =lastline  " Show as much as possible of the last line.
+
+set showmode               " Show current mode in command-line.
+set showcmd                " Show already typed keys when more are expected.
+
+set incsearch              " Highlight while searching with / or ?.
+set ignorecase             " Ignore case when searching
+" set hlsearch               " Keep matches highlighted.
+
+set ttyfast                " Faster redrawing.
+set lazyredraw             " Only redraw when necessary.
+
+set splitbelow             " Open new windows below the current window.
+set splitright             " Open new windows right of the current window.
+
+set wrapscan               " Searches wrap around end-of-file.
+set report      =0         " Always report changed lines.
+set synmaxcol   =200       " Only highlight the first 200 columns.
+
+set nobackup               " Do not keep a backup file
+
+set novisualbell           " no blink ?
+set pastetoggle=<F12>
+
+" 高亮多余的空白字符及 Tab
+highlight RedundantSpaces ctermbg=red guibg=red
+match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+
+" set number
+" highlight LineNr ctermfg=grey
+```

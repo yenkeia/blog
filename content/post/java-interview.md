@@ -218,6 +218,7 @@ void transfer(Account from, Account to, int amount) {
 
 # 19. Java 并发包提供了哪些并发工具类
 java.util.concurrent 及其子包提供了：
+
 - 比 `synchronized` 更加高级的同步结构，包括 `CountDownLatch`、`CyclicBarrie`、`Semaphore` 等，可以实现更加丰富的多线程操作，比如利用 `Semaphore` 作为资源控制器，限制同时进行工作的线程数量
 - 线程安全的容器，比如最常见的 `ConcurrentHashMap`、有序的 `ConcunrrentSkipListMap`，或者通过类似快照机制，实现线程安全的动态数组 `CopyOnWriteArrayList` 等
 - 并发队列实现，如各种 `BlockedQueue`，比较典型的 `ArrayBlockingQueue`、`SynchorousQueue` 或针对特定场景的 `PriorityBlockingQueue` 等

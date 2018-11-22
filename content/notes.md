@@ -1,5 +1,5 @@
 # ubuntu 18.04 阿里源
-```
+```bash
 /etc/apt/sources.list
 
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
@@ -68,8 +68,8 @@ locale-gen en_US.UTF-8
 - https://serverfault.com/questions/157705/how-can-i-run-mongod-in-the-background-on-unix-mac-osx
 
 # idea
-option command + V  生成返回值
-option command + T  对选中的代码（行）进行（try-catch等）操作
+- option command + V  生成返回值
+- option command + T  对选中的代码（行）进行（try-catch等）操作
 
 
 # vim
@@ -81,7 +81,7 @@ option command + T  对选中的代码（行）进行（try-catch等）操作
     - :set ts=4
     - :set noexpandtab
 
-```
+```vim
 set nocompatible
 syntax on                  " Enable syntax highlighting.
 

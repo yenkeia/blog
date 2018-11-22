@@ -124,16 +124,71 @@ Integer 是 int 对应的包装类，Java 会根据上下文自动拆箱/装箱
 
 # 10. 如何保证集合是线性安全的；ConcurrentHashMap 如何实现高效的线程安全
 
-
 # 11. Java IO 方式；NIO 如何实现多路复用
+- BIO 同步阻塞
+- NIO 同步非阻塞
+- NIO2(AIO) 异步非阻塞
 
 # 12. Java 有几种文件拷贝方式；哪种最高效
+- 利用 java.io 类库，直接为源文件构建一个 `FileOutputStream`，完成写入
+
+```java
+public static void copyFileByStream(File source, File dest) throws IOException {
+    try (InputStream is = new FileInputStream(source);
+         OutputStream os = new FileOutputStream(dest);){
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = is.read(buffer)) > 0) {
+            os.write(buffer, 0, length);
+        }
+    }
+ }
+```
+- 利用 java.nio 类库提供的 `transferTo` 或 `transferFrom` 方法实现
+
+```java
+public static void copyFileByChannel(File source, File dest) throws IOException {
+    try (FileChannel sourceChannel = new FileInputStream(source).getChannel();
+         FileChannel targetChannel = new FileOutputStream(dest).getChannel();){
+        for (long count = sourceChannel.size(); count>0;) {
+            long transferred = sourceChannel.transferTo(
+                    sourceChannel.position(), count, targetChannel);            sourceChannel.position(sourceChannel.position() + transferred);
+            count -= transferred;
+        }
+    }
+ }
+```
 
 # 13. 接口和抽象类的区别
+- 接口是对行为的抽象，它是抽象方法的集合，利用接口可以达到 API 定义和实现分离的目的
+- 抽象类是不能实例化的类，用 abstract 关键字修饰 class，其目的主要是代码重用
 
 # 14. 设计模式
+- 创建型
+  - 工厂模式（Factory、Abstract Factory）
+  - 单例模式（Singleton）
+  - 构建器模式（Builder）
+  - 原型模式（ProtoType）
+- 结构型
+  - 桥接模式（Bridge）
+  - 适配器模式（Adapter）
+  - 装饰者模式（Decorator）
+  - 代理模式（Proxy
+  - 组合模式（Composite）
+  - 外观模式（Facade）
+  - 享元模式（Flyweight）
+- 行为型
+  - 略模式（Strategy）
+  - 解释器模式（Interpreter）
+  - 命令模式（Command）
+  - 观察者模式（Observer）
+  - 迭代器模式（Iterator）
+  - 模板方法模式（Template Method）
+  - 访问者模式（Visitor）
 
 # 15. synchronized、ReentranLock
+- synchronized 修饰代码块、方法
+- ReentranLock 修饰代码块，必须手动释放锁
 
 # 16. synchronized 底层实现；锁的升级、降级
 
@@ -162,5 +217,10 @@ void transfer(Account from, Account to, int amount) {
   - 循环依赖关系，两个或者多个个体之间出现了锁的链条环。
 
 # 19. Java 并发包提供了哪些并发工具类
+java.util.concurrent 及其子包提供了：
+- 比 `synchronized` 更加高级的同步结构，包括 `CountDownLatch`、`CyclicBarrie`、`Semaphore` 等，可以实现更加丰富的多线程操作，比如利用 `Semaphore` 作为资源控制器，限制同时进行工作的线程数量
+- 线程安全的容器，比如最常见的 `ConcurrentHashMap`、有序的 `ConcunrrentSkipListMap`，或者通过类似快照机制，实现线程安全的动态数组 `CopyOnWriteArrayList` 等
+- 并发队列实现，如各种 `BlockedQueue`，比较典型的 `ArrayBlockingQueue`、`SynchorousQueue` 或针对特定场景的 `PriorityBlockingQueue` 等
+- `Executor` 框架，可以创建各种不同类型的线程池
 
 # 20. 并发包中 ConcurrentLinkedQueue 和 LinkedBlockingQueue 区别

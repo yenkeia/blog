@@ -42,6 +42,7 @@ locale-gen en_US.UTF-8
 - Linux: `find . -type f -name "*.js" -exec sed -i 's/想要替换的文本/替换成的文本/g' {} +`
 - `find . -name "*.java" -exec grep "文本" -Hn {} \;`
 - `find . -name "*.log" -exec rm -rfv {} +`
+- `find -name "*.js" -not -path "./directory/*"`    不包含某个目录下的文件
 
 # tmux
 - tmux ls
@@ -58,6 +59,8 @@ locale-gen en_US.UTF-8
 - 初始化  git submodule update --init --recursive
 - 更新    git submodule update --recursive --remote
 - git rm --cached file1.txt   删除一个已经提交到仓库的文件
+- git config --get remote.origin.url
+- git remote show origin
 
 # mongo
 - keep mongod running

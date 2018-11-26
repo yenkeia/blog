@@ -2,7 +2,9 @@
 title: "<<深入拆解Java虚拟机>>学习笔记(19-36)"
 date: 2018-11-27T05:30:20+08:00
 draft: false
-# keywords: []
+keywords:
+  - JVM
+  - 虚拟机
 tags:
   - Java
 categories:

@@ -8,7 +8,7 @@ enableEmoji = true
 theme = "jane"
 
 hasCJKLanguage = true
-paginate = 3
+paginate = 8
 copyright = "impyq"
 
 defaultContentLanguage = "zh-cn"

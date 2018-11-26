@@ -1,5 +1,5 @@
 ---
-title: "Java核心技术36讲笔记(1-20)"
+title: "<<Java核心技术36讲>>学习笔记(1-20)"
 date: 2018-11-12T23:13:20+08:00
 draft: false
 tags:
@@ -8,7 +8,7 @@ categories:
   - 学习笔记
 ---
 
-# 1.谈谈你对 Java 平台的理解
+# 1. 谈谈你对 Java 平台的理解
 - JDK(Java Development Kit) 可看作 JRE(Java Runtime Environment) 的超集，JRE 包含了 JVM 和 Java 类库及一些常用模块，JDK 提供更过工具如编译器、诊断工具
 - Java 源代码通过 javac 编译成字节码(bytecode)，通过 JVM 内嵌的解析器将字节码转换为机器码执行(即解释执行)，常见 JVM 如 Hotspot 提供 JIT(动态编译器) 将热点代码编译成机器码执行(即编译执行)
 - Hotspot 内置两种 JIT，C1(client模式) 适用于对启动速度敏感的桌面应用，C2(server模式) 适用长时间运行的服务器端应用
@@ -17,7 +17,7 @@ categories:
   - 编译: 存在 JIT 即时编译器把经常运行的代码作为"热点代码"编译与本地平台相关的机器码，并进行各种层次的优化
   - AOT 编译器: Java 9提供的直接将所有代码编译成机器码执行
 
-# 2.Exception、Error
+# 2. Exception、Error
 - `Error`、`Exception` 都继承自`Throwable`类
 - `Error` 系统错误，不需捕捉
 - `Exception` 分为可检查（checked）异常和不检查（unchecked）异常

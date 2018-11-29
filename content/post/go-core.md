@@ -12,8 +12,20 @@ categories:
 极客时间[Go语言核心36讲](https://time.geekbang.org/column/112)
 
 # 1. 工作区和GOPATH
+环境变量 `GOPATH` 指向的是一个或多个工作区。
+工作区用于放置 Go 语言的源码文件（source file），以及安装（install）后的归档文件（archive file，也就是以 `.a` 为扩展名的文件）和可执行文件（executable file）
 
 # 2. 命令源码文件
+- 源码文件分三种：命令源码文件、库源码文件、测试源码文件
+- 命令源码文件是程序的运行入口，是每个可独立运行的程序必须拥有的，声明属于 `main` 包，并包含无参数无返回值的 `main` 函数
+
+```go
+package main
+import "fmt"
+func main() {fmt.Println("Hello, world!")}
+```
+
+- 命令源码文件通过
 
 # 3. 库源码文件
 

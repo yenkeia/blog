@@ -34,10 +34,46 @@ categories:
 - 初始化：为标记为常量值的字段赋值，以及执行 `< clinit >` 方法的过程
 
 # 4. JVM是如何执行方法调用的？（上）
+- 不提倡可变长参数方法的重载因为 Java 编译器可能无法决定应该调用哪个目标方法（二义性）
+- Java 虚拟机识别方法的关键在于类名、方法名以及方法描述符（method descriptor）
+  - 描述符由方法的参数类型以及返回类型所构成
+- TODO
 
 # 5. JVM是如何执行方法调用的？（下）
 
 # 6. JVM是如何处理异常的？
+- 异常都是 `Throwable` 类或者其子类的实例
+- `Error`: 程序执行状态已经无法恢复，需要中止线程甚至是中止虚拟机
+- `Exception`: 涵盖程序可能需要捕获并且处理的异常
+  - `RuntimeException`: 程序虽然无法继续执行，但是还能抢救一下，如数组索引越界
+- `RuntimeException` 和 `Error` 属于**非检查异常**
+- 所有的**检查异常**都需要程序显式地捕获，或者在方法声明中用 `throws` 关键字标注
+- 在编译生成的字节码中，每个方法都附带一个异常表
+- 异常表中的每一个条目代表一个异常处理器
+
+```java
+public static void main(String[] args) {
+  try {
+    mayThrowException();
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+}
+// 对应的 Java 字节码
+public static void main(java.lang.String[]);
+  Code:
+    0: invokestatic mayThrowException:()V
+    3: goto 11
+    6: astore_1
+    7: aload_1
+    8: invokevirtual java.lang.Exception.printStackTrace
+   11: return
+  Exception table:
+    from  to target type
+      0   3   6  Class java/lang/Exception  // 异常表条目
+```
+`from`、`to` 表识该异常处理器所监控的范围，例如 `try` 代码块覆盖范围，`target` 指针则指向异常处理器的起始位置，如 `catch` 代码块的起始位置
+
 
 # 7. JVM是如何实现反射的？
 

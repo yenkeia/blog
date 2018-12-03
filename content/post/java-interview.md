@@ -118,7 +118,7 @@ Integer 是 int 对应的包装类，Java 会根据上下文自动拆箱/装箱
 - `HashMap`：允许一个以 `null` 为 key 的键值，允许多个以 `null` 为 value 的键值；无序；不支持线程同步，若需同步则 1)`SynchronizedMap` 2) `ConcurrentHashMap`
   - 相较于 `HashTable` 锁住的是对象整体，`ConcurrentHashMap` 基于 lock 实现锁分段技术。先将 `Map` 存放的数据分段存储，然后给每一段数据分配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。`ConcurrentHashMap` 不仅保证了多线程运行环境下的数据访问安全性，而且性能上有长足的提升
   - `HashMap` 性能严重依赖哈希码的有效性，基于哈希思想，实现对数据的读写。当将键值对传递给 `put()` 方法时，它调用键对象的 `hashCode()` 方法计算 `hashcode`，让后找到 `bucket` 位置来储存值对象。当获取对象时，通过键对象的 `equals()` 方法找到正确的键值对，然后返回值对象
-  - HashMap 当两个不同的键对象的 `hashcode` 相同时，它们会储存在同一个 `bucket` 位置的链表中，可通过键对象的 `equals()` 方法用来找到键值对。如果链表大小超过阈值（`TREEIFY_THRESHOLD`, 8），链表就会被改造为树形结构
+  - `HashMap` 当两个不同的键对象的 `hashcode` 相同时，它们会储存在同一个 `bucket` 位置的链表中，可通过键对象的 `equals()` 方法用来找到键值对。如果链表大小超过阈值（`TREEIFY_THRESHOLD`, 8），链表就会被改造为树形结构
 - `TreeMap`：红黑树；未实现 `Comparator` 接口时，key 不可为 `null`；整体顺序由 `key` 顺序决定；
 - `TreeSet`：默认用 `TreeMap` 实现，Java 类库创建了一个 Dummy 对象 `PRESENT`作为 value，然后所有插入的元素其实是以 key 的形式放入 `TreeMap` 里；同理，`HashSet` 也是以 `HashMap` 为基础实现
 

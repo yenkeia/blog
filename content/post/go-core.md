@@ -25,7 +25,7 @@ import "fmt"
 func main() {fmt.Println("Hello, world!")}
 ```
 
-- 命令源码文件通过
+- 命令源码文件通过 `flag` 包接收、解析命令参数
 
 # 3. 库源码文件
 

@@ -1,3 +1,7 @@
+# mysql
+- `CREATE DATABASE xxxx CHARACTER SET utf8 COLLATE utf8_general_ci;`
+- jdbc 插入中文却显示?? `jdbc:mysql://xxx.xxx.xxx.xxx:3306/databaseName?useUnicode=true&characterEncoding=UTF-8`
+
 # ubuntu 18.04 阿里源
 ```bash
 /etc/apt/sources.list

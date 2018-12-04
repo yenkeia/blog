@@ -39,6 +39,7 @@ categories:
 # 线程池解决什么问题，为什么要用线程池
 # 线程间的几种通信方式
 # Java 提供了哪几种线程池？他们各自的使用场景是什么？
+# ThreadLocal
 
 # HashMap 的长度为什么是 2 的幂次方
 # HashMap、ConcurrentHashMap、HashTable的区别

@@ -1,3 +1,6 @@
+# java debug
+sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 target/jar包.war` (JDK 1.8)
+
 # mysql
 - `CREATE DATABASE xxxx CHARACTER SET utf8 COLLATE utf8_general_ci;`
 - jdbc 插入中文却显示?? `jdbc:mysql://xxx.xxx.xxx.xxx:3306/databaseName?useUnicode=true&characterEncoding=UTF-8`

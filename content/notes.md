@@ -1,3 +1,12 @@
+# windows
+- ctrl + 光标左右    单词之间跳转
+
+# sqlyog
+- ctrl + shift + B  快速过滤表
+- F9                执行选中 SQL
+- ctrl + N          新tab
+- ctrl + TAB        tab之间切换
+
 # java debug
 sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 target/jar包.war` (JDK 1.8)
 

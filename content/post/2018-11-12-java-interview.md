@@ -187,12 +187,32 @@ public static void copyFileByChannel(File source, File dest) throws IOException 
   - 访问者模式（Visitor）
 
 # 15. synchronized、ReentranLock
-- synchronized 修饰代码块、方法
-- ReentranLock 修饰代码块，必须手动释放锁
+- synchronized 修饰代码块、方法，依赖 JVM 实现，由编译器保证加锁与释放
+  - 修饰代码块：大括号括起来的代码，作用于调用对象
+  - 修饰方法：整个方法，作用于调用对象
+  - 修饰静态方法：整个静态方法，作用于所有对象
+  - 修饰类：括号括起来部分，作用于所有对象
+- ReentranLock 修饰代码块，依赖特殊的 CPU 指令，必须手动释放锁
+  - 自旋锁实现，通过循环调用 CAS 操作加锁
+  - 可重入性：每次同一个线程进入一次，锁的计数器就自增 1，只有当锁计数器下降为 0 时才能释放锁
+  - 可指定是公平锁还是非公平锁
+  - 提供 `Condition` 类，可以分组唤醒需要唤醒的线程
+  - 提供能中断等待锁的线程机制 `lock.lockInterruptibly()`
 
 # 16. synchronized 底层实现；锁的升级、降级
+TODO 所谓锁的升级、降级，就是 JVM 优化 synchronized 运行的机制，当 JVM 检测到不同的竞争状况时，会自动切换到适合的锁实现
 
 # 17. 一个线程两次调用 start() 方法会出现什么情况
+线程生命周期:
+
+- 新建（NEW）:线程被创建未真正启动的状态
+- 就绪（RUNNABLE）:该线程已经在 JVM 中执行，可能正在运行，也可能在就绪列表里排队
+- 运行（RUNNING）
+- 阻塞（BLOCKED）:同步相关，表示线程在等待 `Monitor lock`, 如线程试图通过 `synchronized` 去获取某个锁，但是其他线程已经独占了，那么当前线程就会处于阻塞状态
+- 等待（WAITING）:表示正在等待其他线程采取某些操作
+- 计时等待（TIMED_WAIT）:进入条件和等待状态类似
+
+第二次调用 start() 方法的时候，线程可能处于终止或者其他（非 NEW）状态，不能再次启动
 
 # 18. 什么情况下 Java 程序会产生死锁；如何定位、修复
 ```java

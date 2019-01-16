@@ -14,6 +14,12 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - `CREATE DATABASE xxxx CHARACTER SET utf8 COLLATE utf8_general_ci;`
 - jdbc 插入中文却显示?? `jdbc:mysql://xxx.xxx.xxx.xxx:3306/databaseName?useUnicode=true&characterEncoding=UTF-8`
 
+# ubuntu 18.04 快捷键
+- Ctrl + Shift + C  复制
+- Ctrl + Shift + V  粘贴
+- Ctrl + Shift + T  terminal 新 tab
+- Ctrl + Shift + W  terminal 关闭 tab
+
 # ubuntu 18.04 阿里源
 ```bash
 /etc/apt/sources.list

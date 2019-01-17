@@ -15,10 +15,19 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - jdbc 插入中文却显示?? `jdbc:mysql://xxx.xxx.xxx.xxx:3306/databaseName?useUnicode=true&characterEncoding=UTF-8`
 
 # ubuntu 18.04 快捷键
-- Ctrl + Shift + C  复制
-- Ctrl + Shift + V  粘贴
-- Ctrl + Shift + T  terminal 新 tab
-- Ctrl + Shift + W  terminal 关闭 tab
+- Ctrl + Shift + C      复制
+- Ctrl + Shift + V      粘贴
+- Ctrl + Shift + T      terminal 新 tab
+- Ctrl + Shift + W      terminal 关闭 tab
+- Alt + 1/2/3           切换 terminal tab
+- Alt + 1/2/3           chrome 切换 tab
+- Ctrl + Alt + T        新 terminal 进程
+- Ctrl + Alt + D        显示/隐藏 桌面
+- Ctrl + Alt + 上下     切换 workspace
+- Win + A               显示 App (连续按两次显示打开的App)
+- Win + Tab             切换到最近的 App = Alt + Tab
+- Win + ↑/↓             App 全屏/App窗口化
+- Shift + Win + ←/→     App 从右边屏幕移到左边/左到右
 
 # ubuntu 18.04 阿里源
 ```bash
@@ -75,7 +84,8 @@ locale-gen en_US.UTF-8
 - docker rm $(docker container ls -f "status=exited" -q)  删除所有已经退出的container
 
 # vscode
-查找替换 option + command + F
+- option + command + F    查找替换      MacOS
+- Ctrl + Shift + I        格式化代码    Ubuntu
 
 # git
 - 初始化  git submodule update --init --recursive

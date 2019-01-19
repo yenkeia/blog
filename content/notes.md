@@ -100,8 +100,10 @@ locale-gen en_US.UTF-8
 - https://serverfault.com/questions/157705/how-can-i-run-mongod-in-the-background-on-unix-mac-osx
 
 # idea
-- option command + V  生成返回值
-- option command + T  对选中的代码（行）进行（try-catch等）操作
+- option command + V    生成返回值
+- option command + T    对选中的代码（行）进行（try-catch等）操作
+- Ctrl + ←/→            editor tab 切换 (ubuntu
+- Ctrl + F4             关闭 tab        (ubuntu
 
 
 # vim

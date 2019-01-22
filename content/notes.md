@@ -86,6 +86,8 @@ locale-gen en_US.UTF-8
 # vscode
 - option + command + F    查找替换      MacOS
 - Ctrl + Shift + I        格式化代码    Ubuntu
+- Ctrl + 回车             下一行        Ubuntu
+- Ctrl + Shift + 回车     上一行        Ubuntu
 
 # git
 - 初始化  git submodule update --init --recursive

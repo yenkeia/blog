@@ -19,6 +19,8 @@ categories:
 6. 视图负责将结果显示到客户端
 
 # 对 IOC、AOP 的理解
+- IOC: 解决了创建一个对象时, 如何获取它所依赖的另一个对象. 即把创建和获取对象的责任交给 spring 容器
+- AOP: 通过代理(或修改字节码)方式, 把非业务逻辑横切插入到业务逻辑里
 # Spring 中用到了那些设计模式
 # Spring Bean 的作用域和生命周期
 # Spring 事务中的隔离级别
@@ -34,11 +36,35 @@ categories:
 - 乐观锁：乐观锁假设认为数据不会造成冲突，在数据进行提交更新时，才对数据的冲突与否进行检测。实现：记录数据版本
 
 # volatile 和 synchronized 的区别
+- volatile 只能修饰变量, synchronized 可以修饰变量和方法
+- 任何线程修改被 volatile 修饰的变量时会立即刷新到主内存并将其余缓存中该变量值清除, 导致其它线程只能去主内存读取最新值
+- volatile 仅能实现变量的修改可见性, 而 synchronized 可以保证变量的修改可见性和原子性(锁定当前变量, 只有当前线程可以访问该变量, 其他线程被阻塞).
+
 # 可重入锁与非可重入锁的区别
+TODO ReentrantLock
+
 # 多线程是解决什么问题的
+防止阻塞, 发挥多核 CPU 优势
+
 # 线程池解决什么问题，为什么要用线程池
+避免频繁创建/销毁线程对象, 达到线程对象的重用
+复用已有资源, 控制资源总量
+
 # 线程间的几种通信方式
+[参考文章](https://github.com/crossoverJie/JCSprout/blob/master/MD/concurrent/thread-communication.md)
+- 等待通知机制, 两个线程通过对同一对象调用 wait() 和 notify() 方法来进行通讯
+- volatile 共享内存
+- CountDownLatch 并发工具
+- CyclicBarrier 并发工具
+- 线程响应中断
+- 管道通信
+
 # Java 提供了哪几种线程池？他们各自的使用场景是什么？
+- newFixedTreadPool
+- newCachedThreadPool
+- newSingleThreadExecutor
+- newScheduledTreadPool
+
 # ThreadLocal
 
 # HashMap 的长度为什么是 2 的幂次方
@@ -227,7 +253,6 @@ categories:
 # redirect 与 forward 的区别
 # 常见的 web 请求返回的状态码
 # Spring 的事务管理 ，Spring Bean 注入的几种方式
-# 什么是 AOP 和 IOC，实现原理是什么
 # Spring Bean 的初始化过程
 # Spring 四种依赖注入方式
 # 什么是 web 服务器、什么是应用服务器、常用的 web 服务器有哪些

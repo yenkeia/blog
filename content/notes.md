@@ -28,6 +28,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - Win + Tab             切换到最近的 App = Alt + Tab
 - Win + ↑/↓             App 全屏/App窗口化
 - Shift + Win + ←/→     App 从右边屏幕移到左边/左到右
+- Win + 数字            切换 App 焦点(focus
 
 # ubuntu 18.04 阿里源
 ```bash
@@ -66,7 +67,12 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 locale-gen en_US.UTF-8
 ```
-- chmod u+x xxx       使xxx文件可执行
+- chmod u+x xxx         使xxx文件可执行
+- lsblk                 列出块设备信息( lsblk -f    列出文件系统类型 FSTYPE
+- mount -t ntfs /dev/sdb1 /media/sdb    以 ntfs 挂载 /dev/sdb1 到 /media/sdb 路径下 (lsblk -> disk -> part
+- df -h                 文件系统磁盘空间使用情况
+- umount /media/sdb     不挂载设备
+- eject                 弹出设备    (lsblk -> disk
 
 # find
 - MacOS: `find . -type f -name "*.js" -exec sed -i '' -e 's/想要替换的文本/替换成的文本/g' {} +`

@@ -1,7 +1,7 @@
 ---
 title: "Java面试常见问题"
 date: 2018-12-04T06:37:46+08:00
-draft: true
+draft: false
 tags: 
   - Java
 categories:
@@ -21,6 +21,7 @@ categories:
 # 对 IOC、AOP 的理解
 - IOC: 解决了创建一个对象时, 如何获取它所依赖的另一个对象. 即把创建和获取对象的责任交给 spring 容器
 - AOP: 通过代理(或修改字节码)方式, 把非业务逻辑横切插入到业务逻辑里
+
 # Spring 中用到了那些设计模式
 # Spring Bean 的作用域和生命周期
 # Spring 事务中的隔离级别
@@ -66,6 +67,9 @@ TODO ReentrantLock
 - newScheduledTreadPool
 
 # ThreadLocal
+- 提供了线程的局部变量, 每个线程可以通过 `set()` `get()` 方法对局部变量操作, 但不会和其它线程局部变量冲突, 实现了线程的数据隔离
+- 每个 Thread 维护一个 ThreadLocalMap 的引用, 键为 ThreadLocal 对象, 值为 `set()` `get()` 的对象
+- ThreadLocal 本身并不存储值, 只是作为键让线程从 ThreadLocalMap 获取值
 
 # HashMap 的长度为什么是 2 的幂次方
 # HashMap、ConcurrentHashMap、HashTable的区别

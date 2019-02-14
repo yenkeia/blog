@@ -29,6 +29,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - Win + ↑/↓             App 全屏/App窗口化
 - Shift + Win + ←/→     App 从右边屏幕移到左边/左到右
 - Win + 数字            切换 App 焦点(focus
+- Win + P               切换输出    [关闭方法](https://askubuntu.com/questions/68463/how-to-disable-global-super-p-shortcut)
 
 # ubuntu 18.04 阿里源
 ```bash
@@ -90,10 +91,11 @@ locale-gen en_US.UTF-8
 - docker rm $(docker container ls -f "status=exited" -q)  删除所有已经退出的container
 
 # vscode
-- option + command + F    查找替换      MacOS
-- Ctrl + Shift + I        格式化代码    Ubuntu
-- Ctrl + 回车             下一行        Ubuntu
-- Ctrl + Shift + 回车     上一行        Ubuntu
+- option + command + F      查找替换        MacOS
+- Ctrl + Shift + I          格式化代码      Ubuntu
+- Ctrl + 回车               下一行          Ubuntu
+- Ctrl + Shift + 回车       上一行          Ubuntu
+- Ctrl + P                  打开文件        Ubuntu
 
 # git
 - 初始化  git submodule update --init --recursive
@@ -112,9 +114,14 @@ locale-gen en_US.UTF-8
 - option command + T    对选中的代码（行）进行（try-catch等）操作
 - Ctrl + ←/→            editor tab 切换 (ubuntu
 - Ctrl + F4             关闭 tab        (ubuntu
+- Ctrl + .              折叠代码        (ubuntu
+- Ctrl + -/+            折叠代码        (ubuntu
 
 
 # vim
+- `` / ''               光标在上一个位置 / 下一个位置之间移动
+- ctrl + O              光标回到上一个位置
+- ctrl + I              光标去到下一个位置
 - TAB替换为空格：
     - :set ts=4
     - :set expandtab

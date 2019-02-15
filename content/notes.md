@@ -112,10 +112,15 @@ locale-gen en_US.UTF-8
 # idea
 - option command + V    生成返回值
 - option command + T    对选中的代码（行）进行（try-catch等）操作
-- Ctrl + ←/→            editor tab 切换 (ubuntu
-- Ctrl + F4             关闭 tab        (ubuntu
-- Ctrl + .              折叠代码        (ubuntu
-- Ctrl + -/+            折叠代码        (ubuntu
+- Ctrl + ←/→            editor tab 切换
+- Ctrl + F4             关闭 tab
+- Ctrl + .              折叠代码
+- Ctrl + -/+            折叠代码
+- F12                   锚点从编辑窗口切换到文件目录
+- Ctrl + Alt + B        跳到方法实现
+- Ctrl + B              跳到方法调用处
+- Shift + Alt + ↑↓      对当前行上下移动
+- Ctrl + Alt + ←→       后退/前进   如当跳到方法实现处后,后退   [与 ubuntu 切换 workspace 冲突](https://stackoverflow.com/questions/47808160/intellij-idea-ctrlaltleft-shortcut-doesnt-work-in-ubuntu)
 
 
 # vim

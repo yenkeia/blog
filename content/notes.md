@@ -13,6 +13,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 # mysql
 - `CREATE DATABASE xxxx CHARACTER SET utf8 COLLATE utf8_general_ci;`
 - jdbc 插入中文却显示?? `jdbc:mysql://xxx.xxx.xxx.xxx:3306/databaseName?useUnicode=true&characterEncoding=UTF-8`
+- [copy database](https://stackoverflow.com/questions/675289/cloning-a-mysql-database-on-the-same-mysql-instance)
 
 # ubuntu 18.04 快捷键
 - Ctrl + Shift + C      复制

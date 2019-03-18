@@ -31,6 +31,8 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - Shift + Win + ←/→     App 从右边屏幕移到左边/左到右
 - Win + 数字            切换 App 焦点(focus
 - Win + P               切换输出    [关闭方法](https://askubuntu.com/questions/68463/how-to-disable-global-super-p-shortcut)
+- genpac --pac-proxy "SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" --gfwlist-url=https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt --output="autoproxy.pac"
+- /usr/bin/google-chrome-stable %U --no-sandbox --proxy-server="socks5://127.0.0.1:1080"
 
 # ubuntu 18.04 阿里源
 ```bash
@@ -59,6 +61,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 - mvn clean package -Dmaven.test.skip=true 清理并打包并跳过测试
 
 # tar
+- `tar -tvf file.tar`                       列出压缩文件内容
 - `tar -xvzf xxx.tar.gz`
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
@@ -82,6 +85,7 @@ locale-gen en_US.UTF-8
 - `find . -name "*.java" -exec grep "文本" -Hn {} \;`
 - `find . -name "*.log" -exec rm -rfv {} +`
 - `find -name "*.js" -not -path "./directory/*"`    不包含某个目录下的文件
+- sed '/^#/ d' 要删除#的文件名 > 新的文件名         [删除以#开头的行](https://stackoverflow.com/questions/8206280/delete-all-lines-beginning-with-a-from-a-file)
 
 # tmux
 - tmux ls
@@ -104,6 +108,7 @@ locale-gen en_US.UTF-8
 - git rm --cached file1.txt   删除一个已经提交到仓库的文件
 - git config --get remote.origin.url
 - git remote show origin
+- .git/info/exclude     该项目本地忽略的文件
 
 # mongo
 - keep mongod running

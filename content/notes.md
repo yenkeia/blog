@@ -146,6 +146,8 @@ locale-gen en_US.UTF-8
 - :bn/:bp               跳到下一个/前一个缓冲区
 - :sb N                 横向打开第N个缓冲区
 - :vert sb N            纵向打开第N个缓冲区
+- :vs                   纵向打开当前缓冲区
+- :vs 文件路径          纵向文件
 
 ```vim
 set nocompatible

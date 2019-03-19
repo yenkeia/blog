@@ -16,8 +16,8 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - [copy database](https://stackoverflow.com/questions/675289/cloning-a-mysql-database-on-the-same-mysql-instance)
 
 # ubuntu 18.04 快捷键
-- Ctrl + Shift + C      复制
-- Ctrl + Shift + V      粘贴
+- Ctrl + Shift + C      terminal 复制
+- Ctrl + Shift + V      terminal 粘贴
 - Ctrl + Shift + T      terminal 新 tab
 - Ctrl + Shift + W      terminal 关闭 tab
 - Alt + 1/2/3           切换 terminal tab

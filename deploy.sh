@@ -5,7 +5,7 @@ git fetch --all
 git reset --hard origin/master
 git pull
 git submodule update --recursive --remote
-hugo
+/opt/hugo/hugo
 
 # rm -rf /opt/blog/public
 # mkdir -p /opt/blog/static/css

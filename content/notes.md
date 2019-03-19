@@ -148,6 +148,10 @@ locale-gen en_US.UTF-8
 - :vert sb N            纵向打开第N个缓冲区
 - :vs                   纵向打开当前缓冲区
 - :vs 文件路径          纵向文件
+- :help buffers         查看缓冲区帮助信息
+- :bd N                 删除第 N 个缓冲区
+- :bunload N            卸载第 N 个缓冲区   (TODO 作用和 bd 区别是?
+
 
 ```vim
 set nocompatible

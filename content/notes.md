@@ -133,6 +133,12 @@ locale-gen en_US.UTF-8
 - `` / ''               光标在上一个位置 / 下一个位置之间移动
 - ctrl + O              光标回到上一个位置
 - ctrl + I              光标去到下一个位置
+- ctrl + F              向下滚一屏
+- ctrl + B              向上滚一屏
+- ctrl + E              向下滚一行
+- ctrl + Y              向上滚一行
+- ctrl + D              向下滚半屏
+- ctrl + U              向上滚半屏
 - TAB替换为空格：
     - :set ts=4
     - :set expandtab

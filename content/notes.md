@@ -141,6 +141,10 @@ locale-gen en_US.UTF-8
     - :set ts=4
     - :set noexpandtab
 
+- :ls                   列出所有缓冲区
+- :b1/2/3               跳到第1/2/3个缓冲区
+- :bn/:bp               跳到下一个/前一个缓冲区
+
 ```vim
 set nocompatible
 syntax on                  " Enable syntax highlighting.

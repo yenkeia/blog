@@ -130,6 +130,9 @@ locale-gen en_US.UTF-8
 
 
 # vim
+- zt                    当前编辑行置为屏顶
+- zz                    当前编辑行置为屏中
+- zb                    当前编辑行置为屏低
 - `` / ''               光标在上一个位置 / 下一个位置之间移动
 - ctrl + O              光标回到上一个位置
 - ctrl + I              光标去到下一个位置
@@ -137,8 +140,8 @@ locale-gen en_US.UTF-8
 - ctrl + B              向上滚一屏
 - ctrl + E              向下滚一行
 - ctrl + Y              向上滚一行
-- ctrl + D              向下滚半屏
-- ctrl + U              向上滚半屏
+- ctrl + D              向下滚半屏  (L + zz
+- ctrl + U              向上滚半屏  (H + zz
 - TAB替换为空格：
     - :set ts=4
     - :set expandtab

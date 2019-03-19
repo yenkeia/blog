@@ -136,12 +136,12 @@ locale-gen en_US.UTF-8
 - `` / ''               光标在上一个位置 / 下一个位置之间移动
 - ctrl + O              光标回到上一个位置
 - ctrl + I              光标去到下一个位置
-- ctrl + F              向下滚一屏
-- ctrl + B              向上滚一屏
-- ctrl + E              向下滚一行
-- ctrl + Y              向上滚一行
-- ctrl + D              向下滚半屏  (L + zz
-- ctrl + U              向上滚半屏  (H + zz
+- ctrl + F              屏幕向下滚一屏
+- ctrl + B              屏幕向上滚一屏
+- ctrl + E              屏幕向下滚一行
+- ctrl + Y              屏幕向上滚一行
+- ctrl + D              光标向下跳半屏  (屏幕向下半屏 L + zz
+- ctrl + U              光标向上跳半屏  (屏幕向上半屏 H + zz
 - TAB替换为空格：
     - :set ts=4
     - :set expandtab
@@ -160,4 +160,8 @@ locale-gen en_US.UTF-8
 - :help buffers         查看缓冲区帮助信息
 - :bd N                 删除第 N 个缓冲区
 - :bunload N            卸载第 N 个缓冲区   (TODO 作用和 bd 区别是?
+
+- :GoImport             导入包
+- :GoDef                跳转到方法定义 (可用 ctrl + O 跳回
+
 

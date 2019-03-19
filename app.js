@@ -29,5 +29,5 @@ handler.on('push', function (event) {
         event.payload.repository.name,
         event.payload.ref
     )
-    execFunc('sh /opt/blog/deploy.sh')
+    execFunc('cd /opt/blog && sh /opt/blog/deploy.sh')
 })

@@ -16,6 +16,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - [copy database](https://stackoverflow.com/questions/675289/cloning-a-mysql-database-on-the-same-mysql-instance)
 - ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '密码';
 - CREATE USER 'root'@'%' IDENTIFIED BY '密码';
+- GRANT ALL ON *.* TO 'root'@'%';
 - FLUSH PRIVILEGES;
 
 

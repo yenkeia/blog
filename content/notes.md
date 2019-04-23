@@ -101,6 +101,7 @@ locale-gen en_US.UTF-8
 - Ctrl + 回车               下一行          Ubuntu
 - Ctrl + Shift + 回车       上一行          Ubuntu
 - Ctrl + P                  打开文件        Ubuntu
+- # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
 
 # git
 - 初始化  git submodule update --init --recursive

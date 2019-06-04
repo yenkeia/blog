@@ -107,6 +107,7 @@ locale-gen en_US.UTF-8
 - Ctrl + 回车               下一行          Ubuntu
 - Ctrl + Shift + 回车       上一行          Ubuntu
 - Ctrl + P                  打开文件        Ubuntu
+- # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
 
 # git
 - 初始化  git submodule update --init --recursive
@@ -141,6 +142,7 @@ locale-gen en_US.UTF-8
 - r                     刷新目录
 
 # vim
+- ctrl + a/x            数字加 / 减 1
 - gt / gT / 1gt / 2gt   下个tab / 上个tab / 第一个tab / 第二个tab
 - bufdo bd              对所有 buffer 缓冲区 执行 bd(删除) 操作
 - bd 2 3 5              同时删除 2 3 5 缓冲区

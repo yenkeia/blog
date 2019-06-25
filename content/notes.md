@@ -73,6 +73,10 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 
 # linux
 ```
+ls -r reverse order
+   -t sort by modification time, newest first
+   -R list subdirectories recursively
+
 echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf

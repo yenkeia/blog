@@ -72,11 +72,13 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
-```
-ls -r reverse order
-   -t sort by modification time, newest first
-   -R list subdirectories recursively
+cp -v  show process of copy file/directory
+ls -r  reverse order
+   -t  sort by modification time, newest first
+   -R  list subdirectories recursively
+cd -  return to last directory
 
+```
 echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf

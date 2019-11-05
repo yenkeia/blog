@@ -1,0 +1,100 @@
+---
+title: "算法代码模版"
+date: 2019-11-05T21:13:20+08:00
+draft: false
+tags:
+  - 算法
+categories:
+  - 学习笔记
+---
+
+# 递归模版
+```python
+def recursion(level, param1, param2, ...):
+
+    # 递归终止条件 recursion terminator
+    if level > MAX_LEVEL:
+        print_result
+        return
+
+    # 到了这层梦境, 在这层梦境要做的事情 process logic in current level
+    process_data(level, data, ...)
+
+    # 下探新的梦境 drill down
+    self.recursion(level + 1, p1, p2, ...)
+
+    # 还原下探之后可能对本层的影响, 还原状态 reverse the current level status if needed
+    reverse_status(level)
+```
+
+# DFS 深度优先遍历 - 递归写法
+```python
+visited = set()
+def dfs(node, visited):
+    visited.add(node)
+    # 处理当前节点 process current node here
+    ...
+    for next_node in node.children():
+        if not next_node in visited:
+            self.dfs(next_node, visited)
+```
+
+# BFS 广度优先遍历 - 递归写法
+```python
+def BFS(gragh, start, end):
+
+    queue = []
+    queue.append([start])
+    visited.add(start)
+    
+    while queue:
+        node = queue.pop()
+        visited.add(node)
+        
+        process(node)
+        nodes = generate_related_nodes(node)
+        queue.push(nodes)
+
+    # other processing work
+    ...
+```
+
+# 二分查找
+```python
+left, right = 0, len(array) - 1
+while left <= right:
+    mid = left + (right - left) / 2
+    if array[mid] == target:
+        # 如果查找到了就直接返回 find the target
+        break or return result
+    elif array[mid] < target:
+        left = mid + 1
+    else:
+        right = mid - 1
+```
+
+# DP (TODO 这个不清楚)
+```java
+// 状态定义
+dp = new int[m+1][n+1];
+
+// 初始状态
+dp[0][0] = x;
+dp[0][1] = y;
+...
+
+// DP 状态的推导
+for i = 0; i <= n; ++i {
+    for j = 0; j <= m; ++j {
+        // 递推方程示例
+        ...
+        d[i][j] = min {dp[i - 1][j], dp[i][j - 1], etc.}
+    }
+}
+return dp[m][n]; // 最优解
+```
+
+# 位运算
+1. X & 1 == 1 OR == 0 判断奇偶 (X % 2 == 1)
+2. X = X & (X - 1) => 清零最低位的 1
+3. X & -X => 得到最低位的 1

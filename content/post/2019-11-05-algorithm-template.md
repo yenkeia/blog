@@ -73,7 +73,7 @@ while left <= right:
         right = mid - 1
 ```
 
-# DP (TODO 这个不清楚)
+# DP 动态规划 (TODO 这个不清楚)
 ```java
 // 状态定义
 dp = new int[m+1][n+1];

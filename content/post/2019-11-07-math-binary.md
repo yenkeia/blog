@@ -1,7 +1,7 @@
 ---
 title: "二进制"
 date: 2019-11-07T21:13:20+08:00
-draft: false
+draft: true
 tags:
   - 数学
 categories:

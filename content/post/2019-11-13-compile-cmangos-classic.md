@@ -9,3 +9,8 @@ categories:
 ---
 
 cMaNGOS 是魔兽世界服务端的模拟器, 本文记录了用 ubuntu 搭建魔兽世界 1.12 服务端的过程.
+
+
+
+# 参考文章
+- https://www.osrsbox.com/blog/2019/04/13/installing-a-wow-vanilla-server-on-ubuntu-linux/

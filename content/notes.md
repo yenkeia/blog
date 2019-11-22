@@ -39,6 +39,8 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - Win + P               切换输出    [关闭方法](https://askubuntu.com/questions/68463/how-to-disable-global-super-p-shortcut)
 - genpac --pac-proxy "SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" --gfwlist-url=https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt --output="autoproxy.pac"
 - /usr/bin/google-chrome-stable %U --no-sandbox --proxy-server="socks5://127.0.0.1:1080"
+- ctrl + alt + F7       图形界面
+- ctrl + alt + F1 ~ F6  命令行界面
 
 # ubuntu 18.04 阿里源
 ```bash

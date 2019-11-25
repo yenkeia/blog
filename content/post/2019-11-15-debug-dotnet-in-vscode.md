@@ -30,7 +30,10 @@ dotnet new console -o demo5
             "args": [],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
-            "console": "internalConsole"
+            "console": "internalConsole",
+            "logging": {
+                "moduleLoad": false
+            }
         }
     ]
 }

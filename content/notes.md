@@ -110,6 +110,7 @@ locale-gen en_US.UTF-8
 - docker rm $(docker container ls -f "status=exited" -q)  删除所有已经退出的container
 
 # vscode
+- Ctrl + Alt + -            返回光标之前位置 (在 Ctrl + 鼠标左键进入函数定义后返回之前的位置) Ubuntu # MacOS 待确定
 - option + command + F      查找替换        MacOS
 - Ctrl + Shift + I          格式化代码      Ubuntu
 - Ctrl + 回车               下一行          Ubuntu

@@ -109,6 +109,10 @@ locale-gen en_US.UTF-8
 - docker container rm $(docker container ls -aq)   删除所有container -q意思只列id
 - docker rm $(docker container ls -f "status=exited" -q)  删除所有已经退出的container
 - docker run -it -p 本地端口:容器端口 image:tag
+- docker stop $(docker ps -a -q)        停止所有正在运行 container
+- docker rm $(docker ps -a -q)          删除所有正在运行的 container
+- docker rmi 镜像id                     删除镜像
+
 
 # vscode
 - Ctrl + Alt + -            返回光标之前位置 (在 Ctrl + 鼠标左键进入函数定义后返回之前的位置) Ubuntu # MacOS 待确定
@@ -118,6 +122,10 @@ locale-gen en_US.UTF-8
 - Ctrl + Shift + 回车       上一行          Ubuntu
 - Ctrl + P                  打开文件        Ubuntu
 - # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
+
+# vscode golang
+- F12                       去到函数定义
+- Shift + F12               显示所有引用到该函数的地方
 
 # git
 - 初始化  git submodule update --init --recursive

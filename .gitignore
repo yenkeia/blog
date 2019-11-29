@@ -46,3 +46,7 @@ package-lock.json
 secret.json
 test.js
 resources
+
+*.swp
+*.o
+*.a

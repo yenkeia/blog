@@ -115,8 +115,9 @@ locale-gen en_US.UTF-8
 
 
 # vscode
-- Ctrl + Alt + -            返回光标之前位置 (在 Ctrl + 鼠标左键进入函数定义后返回之前的位置) Ubuntu # MacOS 待确定
-- option + command + F      查找替换        MacOS
+- Ctrl + Alt + -            返回光标之前位置 (在 Ctrl + 鼠标左键进入函数定义后返回之前的位置) Ubuntu
+- Ctrl + -                  返回光标之前位置 # Macos
+- option + command + F      查找替换        Macos
 - Ctrl + Shift + I          格式化代码      Ubuntu
 - Ctrl + 回车               下一行          Ubuntu
 - Ctrl + Shift + 回车       上一行          Ubuntu
@@ -124,8 +125,10 @@ locale-gen en_US.UTF-8
 - # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
 
 # vscode golang
-- F12                       去到函数定义
-- Shift + F12               显示所有引用到该函数的地方
+- F12                       去到函数定义   # Ubuntu
+- Fn + F12                  去到函数定义   # Macos
+- Shift + F12               显示所有引用到该函数的地方  # Ubuntu
+- Fn + Shift + F12          显示所有引用到该函数的地方  # Macos
 
 # git
 - 初始化  git submodule update --init --recursive

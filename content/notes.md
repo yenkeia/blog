@@ -125,6 +125,7 @@ locale-gen en_US.UTF-8
 - # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
 
 # vscode golang
+- 测试用例 t.Log() 输出需要在 .vscode/settings.json 加上 "go.testFlags": ["-v"]
 - F12                       去到函数定义   # Ubuntu
 - Fn + F12                  去到函数定义   # Macos
 - Shift + F12               显示所有引用到该函数的地方  # Ubuntu

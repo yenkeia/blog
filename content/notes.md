@@ -1,3 +1,7 @@
+# other
+- hugo new post/2019/12/24/xxx.md  将会在 blog/content/post/20 生成文件
+- zsh下 `命令` + TAB 可以自动替换``里面的内容. 如 `pwd` + TAB 会替换成当前路径
+
 # windows
 - ctrl + 光标左右    单词之间跳转
 
@@ -42,22 +46,6 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - ctrl + alt + F7       图形界面
 - ctrl + alt + F1 ~ F6  命令行界面
 
-# ubuntu 18.04 阿里源
-```bash
-/etc/apt/sources.list
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-```
-
 # supervisor
 - `reread` - Reread supervisor configuration. Do not update or restart the running services.
 - `update` - Restart service(s) whose configuration has changed. Usually run after 'reread'.
@@ -74,6 +62,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
+ssh-copy-id -i .ssh/id_rsa.pub root@192.168.56.79  复制秘钥
 cp -v  show process of copy file/directory
 ls -r  reverse order
    -t  sort by modification time, newest first
@@ -132,6 +121,7 @@ locale-gen en_US.UTF-8
 - Fn + Shift + F12          显示所有引用到该函数的地方  # Macos
 
 # git
+- git clone --recursive git@github.com:yenkeia/blog.git
 - 初始化  git submodule update --init --recursive
 - 更新    git submodule update --recursive --remote
 - git rm --cached file1.txt   删除一个已经提交到仓库的文件
@@ -201,5 +191,4 @@ locale-gen en_US.UTF-8
 
 - :GoImport             导入包
 - :GoDef                跳转到方法定义 (可用 ctrl + O 跳回
-
 

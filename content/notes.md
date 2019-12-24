@@ -1,6 +1,6 @@
 # other
 - hugo new post/2019/12/24/xxx.md  将会在 blog/content/post/20 生成文件
-- zsh下 `命令` + TAB 可以自动替换``里面的内容. 如 `pwd` + TAB 会替换成当前路径
+- zsh下 \`命令\` + TAB 可以自动替换\`\`里面的内容. 如 \`pwd\` + TAB 会替换成当前路径
 
 # windows
 - ctrl + 光标左右    单词之间跳转
@@ -62,13 +62,12 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
-ssh-copy-id -i .ssh/id_rsa.pub root@192.168.56.79  复制秘钥
-cp -v  show process of copy file/directory
-ls -r  reverse order
-   -t  sort by modification time, newest first
-   -R  list subdirectories recursively
-cd -  return to last directory
-
+- ssh-copy-id -i .ssh/id_rsa.pub root@192.168.56.79  复制秘钥
+- cp -v                 显示复制的进度(复制大文件或文件夹时)
+- ls -r     倒序显示目录下文件
+    -t      根据文件的修改时间排序，最近修改的文件靠前
+    -R      递归显示子文件夹下文件
+- cd -        返回 cd 之前的目录
 ```
 echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -111,7 +110,7 @@ locale-gen en_US.UTF-8
 - Ctrl + 回车               下一行          Ubuntu
 - Ctrl + Shift + 回车       上一行          Ubuntu
 - Ctrl + P                  打开文件        Ubuntu
-- # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
+- \# (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
 
 # vscode golang
 - 测试用例 t.Log() 输出需要在 .vscode/settings.json 加上 "go.testFlags": ["-v"]

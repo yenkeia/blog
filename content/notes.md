@@ -26,6 +26,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 
 
 # ubuntu 18.04 快捷键
+- nautilus - a file manager for GNOME  相当于 MacOS 下 open 命令
 - Ctrl + Shift + C      terminal 复制
 - Ctrl + Shift + V      terminal 粘贴
 - Ctrl + Shift + T      terminal 新 tab
@@ -62,18 +63,25 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
+- doc to pdf / html
+    ```bash
+    apt-get install libreoffice --no-install-recommends
+    apt-get install -y --force-yes --no-install-recommends ttfonts-wqy-microhei
+    apt-get install -y --force-yes --no-install-recommends ttttf-wqy-zenhei
+    libreoffice --headless --convert-to html '/root/2019.doc' --outdir '/root/tmp/outdir'
+    ```
 - ssh-copy-id -i .ssh/id_rsa.pub root@192.168.56.79  复制秘钥
 - cp -v                 显示复制的进度(复制大文件或文件夹时)
 - ls -r     倒序显示目录下文件
     -t      根据文件的修改时间排序，最近修改的文件靠前
     -R      递归显示子文件夹下文件
 - cd -        返回 cd 之前的目录
-```
-echo "LC_ALL=en_US.UTF-8" >> /etc/environment
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-locale-gen en_US.UTF-8
-```
+    ```bash
+    echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+    echo "LANG=en_US.UTF-8" > /etc/locale.conf
+    locale-gen en_US.UTF-8
+    ```
 - chmod u+x xxx         使xxx文件可执行
 - lsblk                 列出块设备信息( lsblk -f    列出文件系统类型 FSTYPE
 - mount -t ntfs /dev/sdb1 /media/sdb    以 ntfs 挂载 /dev/sdb1 到 /media/sdb 路径下 (lsblk -> disk -> part

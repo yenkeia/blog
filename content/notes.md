@@ -1,3 +1,7 @@
+# other
+- hugo new post/2019/12/24/xxx.md  将会在 blog/content/post/20 生成文件
+- zsh下 \`命令\` + TAB 可以自动替换\`\`里面的内容. 如 \`pwd\` + TAB 会替换成当前路径
+
 # windows
 - ctrl + 光标左右    单词之间跳转
 
@@ -22,6 +26,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 
 
 # ubuntu 18.04 快捷键
+- nautilus - a file manager for GNOME  相当于 MacOS 下 open 命令
 - Ctrl + Shift + C      terminal 复制
 - Ctrl + Shift + V      terminal 粘贴
 - Ctrl + Shift + T      terminal 新 tab
@@ -42,22 +47,6 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - ctrl + alt + F7       图形界面
 - ctrl + alt + F1 ~ F6  命令行界面
 
-# ubuntu 18.04 阿里源
-```bash
-/etc/apt/sources.list
-
-deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-```
-
 # supervisor
 - `reread` - Reread supervisor configuration. Do not update or restart the running services.
 - `update` - Restart service(s) whose configuration has changed. Usually run after 'reread'.
@@ -74,18 +63,25 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
-cp -v  show process of copy file/directory
-ls -r  reverse order
-   -t  sort by modification time, newest first
-   -R  list subdirectories recursively
-cd -  return to last directory
-
-```
-echo "LC_ALL=en_US.UTF-8" >> /etc/environment
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-locale-gen en_US.UTF-8
-```
+- doc to pdf / html
+    ```bash
+    apt-get install libreoffice --no-install-recommends
+    apt-get install -y --force-yes --no-install-recommends ttfonts-wqy-microhei
+    apt-get install -y --force-yes --no-install-recommends ttttf-wqy-zenhei
+    libreoffice --headless --convert-to html '/root/2019.doc' --outdir '/root/tmp/outdir'
+    ```
+- ssh-copy-id -i .ssh/id_rsa.pub root@192.168.56.79  复制秘钥
+- cp -v                 显示复制的进度(复制大文件或文件夹时)
+- ls -r     倒序显示目录下文件
+    -t      根据文件的修改时间排序，最近修改的文件靠前
+    -R      递归显示子文件夹下文件
+- cd -        返回 cd 之前的目录
+    ```bash
+    echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+    echo "LANG=en_US.UTF-8" > /etc/locale.conf
+    locale-gen en_US.UTF-8
+    ```
 - chmod u+x xxx         使xxx文件可执行
 - lsblk                 列出块设备信息( lsblk -f    列出文件系统类型 FSTYPE
 - mount -t ntfs /dev/sdb1 /media/sdb    以 ntfs 挂载 /dev/sdb1 到 /media/sdb 路径下 (lsblk -> disk -> part
@@ -122,15 +118,17 @@ locale-gen en_US.UTF-8
 - Ctrl + 回车               下一行          Ubuntu
 - Ctrl + Shift + 回车       上一行          Ubuntu
 - Ctrl + P                  打开文件        Ubuntu
-- # (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
+- \# (Shift + 3)             去到该字符串最近出现的地方 类似跳转到引用处
 
 # vscode golang
+- 测试用例 t.Log() 输出需要在 .vscode/settings.json 加上 "go.testFlags": ["-v"]
 - F12                       去到函数定义   # Ubuntu
 - Fn + F12                  去到函数定义   # Macos
 - Shift + F12               显示所有引用到该函数的地方  # Ubuntu
 - Fn + Shift + F12          显示所有引用到该函数的地方  # Macos
 
 # git
+- git clone --recursive git@github.com:yenkeia/blog.git
 - 初始化  git submodule update --init --recursive
 - 更新    git submodule update --recursive --remote
 - git rm --cached file1.txt   删除一个已经提交到仓库的文件
@@ -200,5 +198,4 @@ locale-gen en_US.UTF-8
 
 - :GoImport             导入包
 - :GoDef                跳转到方法定义 (可用 ctrl + O 跳回
-
 

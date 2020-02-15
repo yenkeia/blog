@@ -7,7 +7,7 @@ draft: false
 tags: 
   - C#
 categories:
-  - 笔记
+  - 其他
 ---
 
 生成 dotnet 项目

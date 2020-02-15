@@ -5,7 +5,7 @@ draft: false
 tags:
   - Java
 categories:
-  - 学习笔记
+  - 编程语言
 ---
 
 # 1. 谈谈你对 Java 平台的理解

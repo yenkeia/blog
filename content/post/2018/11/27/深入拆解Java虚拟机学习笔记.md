@@ -5,7 +5,7 @@ draft: false
 tags:
   - Java
 categories:
-  - 学习笔记
+  - 编程语言
 ---
 极客时间[深入拆解Java虚拟机](https://time.geekbang.org/column/108)
 

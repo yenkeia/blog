@@ -11,6 +11,8 @@ hasCJKLanguage = true
 paginate = 8
 copyright = "impyq"
 
+enableGitInfo = true  # 可根据 Git 中的提交生成最近更新记录。
+
 defaultContentLanguage = "zh-cn"
 [languages.zh-cn]
   languageCode = "zh-cn"
@@ -52,7 +54,7 @@ pygmentsUseClasses = true
   homeFullContent = false
   logoTitle = "impyq"
   keywords = ["impyq", "博客", "笔记"]
-  description = "督促自己学习不断进步"
+  description = "个人博客，学习笔记，督促自己不断进步"
   dateFormatToUse = "2006-01-02"
   toc = true
   photoswipe = true

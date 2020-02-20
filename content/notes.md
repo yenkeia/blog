@@ -63,6 +63,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
+- ls -l /tmp | grep '^d'        仅列出目录
 - doc to pdf / html
     ```bash
     apt-get install libreoffice --no-install-recommends
@@ -199,3 +200,6 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - :GoImport             导入包
 - :GoDef                跳转到方法定义 (可用 ctrl + O 跳回
 
+# wireshark
+- cat /etc/group |grep wireshark
+- sudo usermod -a -G wireshark $USER            把当前用户加到 wireshark 用户组

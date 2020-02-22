@@ -26,6 +26,8 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 
 
 # ubuntu 18.04 快捷键
+- Ctrl + Tab            Chrome 切换到右边的 tab
+- Ctrl + Shift + Tab    Chrome 切换到左边的 tab
 - nautilus - a file manager for GNOME  相当于 MacOS 下 open 命令
 - Ctrl + Shift + C      terminal 复制
 - Ctrl + Shift + V      terminal 粘贴

@@ -65,6 +65,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
+- sudo dpkg-reconfigure console-setup
 - nohup ./server > mir.log 2>&1 &
 - ls -l /tmp | grep '^d'        仅列出目录
 - doc to pdf / html

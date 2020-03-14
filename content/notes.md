@@ -65,6 +65,8 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - `tar czf name_of_archive_file.tar.gz name_of_directory_to_tar`
 
 # linux
+- cat /sys/class/power_supply/BAT0/capacity
+- alt + ->   change tty1 to tty2
 - ls *
 - sudo dpkg-reconfigure console-setup
 - nohup ./server > mir.log 2>&1 &

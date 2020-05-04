@@ -50,3 +50,5 @@ resources
 *.swp
 *.o
 *.a
+
+.vscode

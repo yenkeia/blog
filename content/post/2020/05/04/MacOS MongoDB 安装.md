@@ -47,6 +47,20 @@ net:
   port: 27017
 setParameter:
   enableLocalhostAuthBypass: false
+# security:
+#   authorization: "enabled"
 ```
 
 - 启动 sudo mongod -f /etc/mongod.conf
+- 设置管理员账号
+
+```shell
+use admin
+db.createUser(
+  {
+    user: "root",
+    pwd: "********",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+```

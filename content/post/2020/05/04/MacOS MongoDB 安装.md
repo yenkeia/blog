@@ -2,8 +2,8 @@
 title: "MacOS MongoDB 安装"
 date: 2020-05-04T23:32:07+08:00
 draft: false
-# tags:
-#   -
+tags:
+  - MongoDB
 categories:
   - 其他
 ---

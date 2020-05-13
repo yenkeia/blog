@@ -143,6 +143,8 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - git config --get remote.origin.url
 - git remote show origin
 - .git/info/exclude     该项目本地忽略的文件
+- git remove -v     查看远程仓库
+- git checkout -b dev origin/dev    切换到dev分支上,接着跟远程的origin地址上的dev分支关联起来
 
 # mongo
 - keep mongod running

@@ -137,6 +137,7 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 
 # git
 - git clone --recursive git@github.com:yenkeia/blog.git
+- git submodule update --init --recursive
 - 初始化  git submodule update --init --recursive
 - 更新    git submodule update --recursive --remote
 - git rm --cached file1.txt   删除一个已经提交到仓库的文件

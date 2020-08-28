@@ -128,8 +128,103 @@ make
 ./test
 ```
 
+## GLEW
+
+GLEW 是 OpenGL 的扩展工具集，很多教程用的是 GLFW + GLEW 而不是 GLFW + GLAD
+
+```bash
+sudo apt-get install libglew-dev
+```
+
+## 另一个测试程序
+
+准备
+
+```bash
+mkdir -p ~/Codes/test-opengl #新建项目目录
+cd ~/Codes/test-opengl
+touch main.cpp
+touch CMakeLists.txt
+```
+
+在 main.cpp 中输入以下代码(来源《Computer Graphics Programming in OpenGL with C++ by V. Scott Gordon》程序 2-1)
+
+```cpp
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <iostream>
+
+using namespace std;
+
+void init(GLFWwindow *window) {}
+
+void display(GLFWwindow *window, double currentTime)
+{
+    glClearColor(1.0, 0.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+int main(void)
+{
+    if (!glfwInit())
+    {
+        exit(EXIT_FAILURE);
+    }
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    GLFWwindow *window = glfwCreateWindow(600, 600, "hello world", NULL, NULL);
+    glfwMakeContextCurrent(window);
+    if (glewInit() != GLEW_OK)
+    {
+        exit(EXIT_FAILURE);
+    }
+    glfwSwapInterval(1);
+    init(window);
+    while (!glfwWindowShouldClose(window))
+    {
+        display(window, glfwGetTime());
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    exit(EXIT_SUCCESS);
+}
+```
+
+在 CMakeLists.txt 中输入
+
+```plain
+CMAKE_MINIMUM_REQUIRED(VERSION 3.16)
+PROJECT(test)
+
+FIND_PACKAGE(GLEW REQUIRED)
+FIND_PACKAGE(glfw3 REQUIRED)
+FIND_PACKAGE(OpenGL REQUIRED)
+
+SET(SOURCE_FILES main.cpp)
+ADD_EXECUTABLE(test ${SOURCE_FILES})
+
+TARGET_LINK_LIBRARIES(test GLEW::GLEW)
+TARGET_LINK_LIBRARIES(test glfw)
+TARGET_LINK_LIBRARIES(test OpenGL::GL)
+```
+
+编译运行
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+./test
+```
+
+即可以看到一个红色的窗口.
+
 ## 参考资料
 
 - [GLFW-Building applications](https://www.glfw.org/docs/latest/build_guide.html)
 - [Linux(Ubuntu) OpenGL 开发环境](https://www.cnblogs.com/psklf/p/9705688.html)
 - [how-to-build-install-glfw-3-and-use-it-in-a-linux-project](https://stackoverflow.com/questions/17768008/how-to-build-install-glfw-3-and-use-it-in-a-linux-project)
+- [linking-glew-with-cmake](https://stackoverflow.com/questions/27472813/linking-glew-with-cmake)

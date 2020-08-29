@@ -7,7 +7,7 @@ draft: false
 tags:
   - JavaScript
 categories:
-  - 其他
+  - 编程语言
 ---
 
 ## 0. 对象 (object) 和实例 (instance)

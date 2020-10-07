@@ -25,7 +25,7 @@ void Application::run()
 	while (mWindow.isOpen())
 	{
 		sf::Time dt = clock.restart();	// dt: deltaTime 两次循环时间差
-		timeSinceLastUpdate += dt;		// 游戏世界中, 两帧之间的时间差
+		timeSinceLastUpdate += dt;	// 游戏世界中, 两帧之间的时间差
 		while (timeSinceLastUpdate > timePerFrame)
 		{
 			timeSinceLastUpdate -= timePerFrame;
@@ -35,8 +35,12 @@ void Application::run()
 				mWindow.close();
 		}
 		updateStatistics(dt);	// 更新 FPS 等信息
-		render();				// 渲染
+		render();	// 渲染
 	}
 }
 // 参考: http://sshpark.com.cn/2019/06/05/用C++和SFML写游戏-Game类的创建（2）/
 ```
+
+## 代码命名规则
+
+类成员变量以 `m` 开头, 如: `mWindow`, `mIsMovingUp`. 类成员函数(方法)以小写开头: `update()`, 类静态变量及静态函数以大写开头: `PlayerSpeed`, 和 Java 驼峰命名一致.

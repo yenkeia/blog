@@ -95,3 +95,8 @@ int main(void){
   1. `-I` 选项所指定的路径
   2. 环境变量 `C_INCLUDE_PATH` 包含的路径
   3. 预配置的路径
+
+## linkname, soname, realname
+
+TODO...
+参考: https://www.limitedwish.org/threethings/2012/07/16/linkname-soname-realname/

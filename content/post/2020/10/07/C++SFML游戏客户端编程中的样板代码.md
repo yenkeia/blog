@@ -3,7 +3,7 @@ title: "C++SFML游戏客户端编程中的样板代码"
 date: 2020-10-07T23:03:08+08:00
 draft: false
 tags:
-  - c/c++
+  - C/C++
   - 游戏
   - SFML
 categories:

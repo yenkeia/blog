@@ -9,15 +9,17 @@ categories:
 ---
 
 # 1. 谈谈你对 Java 平台的理解
+
 - JDK(Java Development Kit) 可看作 JRE(Java Runtime Environment) 的超集，JRE 包含了 JVM 和 Java 类库及一些常用模块，JDK 提供更过工具如编译器、诊断工具
 - Java 源代码通过 javac 编译成字节码(bytecode)，通过 JVM 内嵌的解析器将字节码转换为机器码执行(即解释执行)，常见 JVM 如 Hotspot 提供 JIT(动态编译器) 将热点代码编译成机器码执行(即编译执行)
-- Hotspot 内置两种 JIT，C1(client模式) 适用于对启动速度敏感的桌面应用，C2(server模式) 适用长时间运行的服务器端应用
+- Hotspot 内置两种 JIT，C1(client 模式) 适用于对启动速度敏感的桌面应用，C2(server 模式) 适用长时间运行的服务器端应用
 - java 源代码经过 javac 编译成 .class 文件经 JVM 解析或编译运行
   - 解析: .class 文件经过 JVM 内嵌的解析器解析执行
   - 编译: 存在 JIT 即时编译器把经常运行的代码作为"热点代码"编译与本地平台相关的机器码，并进行各种层次的优化
-  - AOT 编译器: Java 9提供的直接将所有代码编译成机器码执行
+  - AOT 编译器: Java 9 提供的直接将所有代码编译成机器码执行
 
 # 2. Exception、Error
+
 - `Error`、`Exception` 都继承自`Throwable`类
 - `Error` 系统错误，不需捕捉
 - `Exception` 分为可检查（checked）异常和不检查（unchecked）异常
@@ -27,11 +29,13 @@ categories:
 - `NoClassDefFoundError` 产生的原因：如果 JVM 或者 ClassLoader 实例尝试加载（正常的方法调用或使用 `new` 来创建新对象的）类时找不到类的定义
 
 # 3. final、finaly、finalize
+
 - `final` 修饰的类不可被继承，修饰的变量不可修改，修饰的方法不可被重写（`override`）
 - `finaly` 是保证重点代码一定被执行的机制，如用 `try-finaly` 释放锁
 - `finalize` 对象在被垃圾收集前调用，容易导致拖慢垃圾收集造成 OOM，在 JDK 9 中标记为 `deprecated`
 
 # 4. 强引用、软引用、弱引用、幻象引用
+
 - 所有引用类型，都是抽象类 `java.lang.ref.Reference` 的子类
 - 强引用：通过 `new` 关键字创建的对象所关联的引用，只要超过了引用的作用域或者显式地将相应（强）引用赋值为 `null`，就可被垃圾收集，具体回收时机还要看垃圾收集策略
 - 软引用：通过 `SoftReference` 类实现，JVM 抛出 `OutOfMemoryError` 之前，清理软引用指向的对象，
@@ -44,18 +48,21 @@ categories:
   - 当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之关联的引用队列中
     ```
     ReferenceQueue queue = new ReferenceQueue();
-    PhantomReference pr = new PhantomReference(object, queue); 
+    PhantomReference pr = new PhantomReference(object, queue);
     ```
   - 程序可以通过判断引用队列中是否已经加入了虚引用，来了解被引用的对象是否将要被垃圾回收
   - 在静态内部类中，经常会使用虚引用。例如，一个类发送网络请求，承担 callback 的静态内部类，则常以虚引用的方式来保存外部类（宿主类）的引用，当外部类需要被 JVM 回收时，不会因为网络请求没有及时回来，导致外部类不能被回收，引起内存泄漏
 - 幻象引用：`get()` 永远返回 `null`
 
 # 5. String、StringBuffer、StringBuilder
+
 - 通过 `new` 方法创建的 `String` 对象是不检查字符串池的，而是直接在堆区或栈区创建一个新的对象，也不会把对象放入池中
+
 ```java
   String str1 = "123";              //通过直接量赋值方式，放入字符串常量池
   String str2 = new String("123");  //通过 new 方式赋值方式，不放入字符串常量池
 ```
+
 - `String` 被声明成 `final class`，所有属性也是 `final` 的，它的不可变性，类似拼接、裁剪字符串等动作，都会产生新的 `String` 对象
 - `StringBuffer` 和 `StringBuilder` 都实现了 `AbstractStringBuilder` 抽象类，拥有几乎一致对外提供的调用接口；其底层在内存中的存储方式与 `String` 相同，都是以一个有序的数组（`char` 类型的数组，JDK 9 以后是 `byte` 数组）进行存储
 - 两者对象在构造过程中，首先按照默认大小申请一个字符数组，由于会不断加入新数据，当超过默认大小后，会创建一个更大的数组，并将原先的数组内容复制过来，再丢弃旧的数组。因此，对于较大对象的扩容会涉及大量的内存复制操作，如果能够预先评估大小，可提升性能。
@@ -63,6 +70,7 @@ categories:
 - `StringBuffer` 类中方法定义前面都会有 `synchronize` 关键字，线程安全
 
 # 6. 动态代理是基于什么原理
+
 - 反射: 程序在运行时*自省*（introspect）的能力
 - 静态代理：事先写好代理类，可以手工编写，也可以用工具生成。缺点是每个业务类都要对应一个代理类，非常不灵活
 - 动态代理：运行时自动生成代理对象。缺点是生成代理代理对象和调用代理方法都要额外花费时间
@@ -73,8 +81,8 @@ categories:
 // JDK 动态代理
 public class MyDynamicProxy {
     public static void main(String[] args) {
-        HelloImpl helloImpl = new HelloImpl();  
-        MyInvocationHandler handler = new MyInvocationHandler(helloImpl); 
+        HelloImpl helloImpl = new HelloImpl();
+        MyInvocationHandler handler = new MyInvocationHandler(helloImpl);
         // 为被调用目标构建代理对象
         Hello proxyHello = (Hello) Proxy.newProxyInstance(HelloImpl.class.getClassLoader(), HelloImpl.class.getInterfaces(), handler);
         // 调用代理方法
@@ -99,12 +107,14 @@ class MyInvocationHandler implements InvocationHandler {
 // 输出:
 // 这里是代理插入的额外逻辑
 // Hello World
-```  
+```
 
 # 7. int、Integer
+
 Integer 是 int 对应的包装类，Java 会根据上下文自动拆箱/装箱
 
 # 8. Vector、ArrayList、LinkedList
+
 - 都是有序集合
 - ArrayList: 非线程安全的动态数组，扩容时空间增加 50%
 - Vector: 是基于 `synchronized` 实现的线程安全的 `ArrayList` ，动态扩容时空间提高一倍
@@ -113,6 +123,7 @@ Integer 是 int 对应的包装类，Java 会根据上下文自动拆箱/装箱
 - LinkedList: 非线程安全的双向链表，删除插入元素快，随机访问慢
 
 # 9. Hashtable、HashMap、TreeMap
+
 - 三者都是以键值对形式存储操作数据类型的容器类型
 - `HashTable`：key-value 不能为 `null` ；无序；方法函数都是同步的（采用 `synchronized` 修饰）；不推荐使用
 - `HashMap`：允许一个以 `null` 为 key 的键值，允许多个以 `null` 为 value 的键值；无序；不支持线程同步，若需同步则 1)`SynchronizedMap` 2) `ConcurrentHashMap`
@@ -122,14 +133,34 @@ Integer 是 int 对应的包装类，Java 会根据上下文自动拆箱/装箱
 - `TreeMap`：红黑树；未实现 `Comparator` 接口时，key 不可为 `null`；整体顺序由 `key` 顺序决定；
 - `TreeSet`：默认用 `TreeMap` 实现，Java 类库创建了一个 Dummy 对象 `PRESENT`作为 value，然后所有插入的元素其实是以 key 的形式放入 `TreeMap` 里；同理，`HashSet` 也是以 `HashMap` 为基础实现
 
-# 10. 如何保证集合是线性安全的；ConcurrentHashMap 如何实现高效的线程安全
+# 10. ConcurrentHashMap 如何实现高效的线程安全
+
+Java 集合框架的典型容器类, 它们绝大部分都不是线程安全的, 仅有的线程安全实现, 比如 Vector、Stack, 性能不高.
+
+更普遍的选择是用并发包提供的线程安全容器类:
+
+- 各种并发容器, 比如 ConcurrentHashMap, CopyOnWriteArrayList
+- 各种线程安全队列 (Queue/Deque) , 如 ArrayBlockingQueue, SynchronousQueue
+- 各种有序容器的线程安全版本等
+
+Hashtable 的实现方式: 在 put, get, size 等方法加上 `synchronized` 导致所有并发操作都要竞争同一把锁, 效率不高.
+
+ConcurrentHashMap 分离锁，也就是将内部进行分段 (Segment), 里面则是 HashEntry 的数组, 和 HashMap 类似, 哈希相同的条目也是以链表形式存放.
+Segment 本身就是基于 ReentrantLock 的扩展实现, 在并发修改期间, 相应 Segment 是被锁定的.
+
+参考:
+
+- [第 10 讲](https://time.geekbang.org/column/article/8137)
+- [探索 ConcurrentHashMap 高并发性的实现机制](https://developer.ibm.com/zh/articles/java-lo-concurrenthashmap/)
 
 # 11. Java IO 方式；NIO 如何实现多路复用
+
 - BIO 同步阻塞
 - NIO 同步非阻塞
 - NIO2(AIO) 异步非阻塞
 
 # 12. Java 有几种文件拷贝方式；哪种最高效
+
 - 利用 java.io 类库，直接为源文件构建一个 `FileOutputStream`，完成写入
 
 ```java
@@ -144,6 +175,7 @@ public static void copyFileByStream(File source, File dest) throws IOException {
     }
  }
 ```
+
 - 利用 java.nio 类库提供的 `transferTo` 或 `transferFrom` 方法实现
 
 ```java
@@ -160,10 +192,12 @@ public static void copyFileByChannel(File source, File dest) throws IOException 
 ```
 
 # 13. 接口和抽象类的区别
+
 - 接口是对行为的抽象，它是抽象方法的集合，利用接口可以达到 API 定义和实现分离的目的
 - 抽象类是不能实例化的类，用 abstract 关键字修饰 class，其目的主要是代码重用
 
 # 14. 设计模式
+
 - 创建型
   - 工厂模式（Factory、Abstract Factory）
   - 单例模式（Singleton）
@@ -187,6 +221,7 @@ public static void copyFileByChannel(File source, File dest) throws IOException 
   - 访问者模式（Visitor）
 
 # 15. synchronized、ReentranLock
+
 - synchronized 修饰代码块、方法，依赖 JVM 实现，由编译器保证加锁与释放
   - 修饰代码块：大括号括起来的代码，作用于调用对象
   - 修饰方法：整个方法，作用于调用对象
@@ -200,9 +235,11 @@ public static void copyFileByChannel(File source, File dest) throws IOException 
   - 提供能中断等待锁的线程机制 `lock.lockInterruptibly()`
 
 # 16. synchronized 底层实现；锁的升级、降级
+
 TODO 所谓锁的升级、降级，就是 JVM 优化 synchronized 运行的机制，当 JVM 检测到不同的竞争状况时，会自动切换到适合的锁实现
 
 # 17. 一个线程两次调用 start() 方法会出现什么情况
+
 线程生命周期:
 
 - 新建（NEW）:线程被创建未真正启动的状态
@@ -215,6 +252,7 @@ TODO 所谓锁的升级、降级，就是 JVM 优化 synchronized 运行的机�
 第二次调用 start() 方法的时候，线程可能处于终止或者其他（非 NEW）状态，不能再次启动
 
 # 18. 什么情况下 Java 程序会产生死锁；如何定位、修复
+
 ```java
 void transfer(Account from, Account to, int amount) {
   synchronized (from) {
@@ -225,6 +263,7 @@ void transfer(Account from, Account to, int amount) {
   }
 }
 ```
+
 - 死锁：在多个线程之间互相持有对方所需要的锁而永久处于阻塞状态
 - 死锁的条件必须同时满足：
   - 互斥等待（同一个任务只能有一个线程执行，别的线程必须等待，即必须要有锁的存在）解决方法：把执行逻辑改成不含有锁的存在，很难
@@ -237,6 +276,7 @@ void transfer(Account from, Account to, int amount) {
   - 循环依赖关系，两个或者多个个体之间出现了锁的链条环。
 
 # 19. Java 并发包提供了哪些并发工具类
+
 java.util.concurrent 及其子包提供了：
 
 - 比 `synchronized` 更加高级的同步结构，包括 `CountDownLatch`、`CyclicBarrie`、`Semaphore` 等，可以实现更加丰富的多线程操作，比如利用 `Semaphore` 作为资源控制器，限制同时进行工作的线程数量
@@ -246,9 +286,76 @@ java.util.concurrent 及其子包提供了：
 
 # 20. 并发包中 ConcurrentLinkedQueue 和 LinkedBlockingQueue 区别
 
-# 21. Java并发类库提供的线程池有哪几种？分别有什么特点？
+ConcurrentLinkedQueue 是并发包的容器, 多线程访问场景可以提高吞吐量
+LinkedBlockingQueue 基于锁, 并提供了 BlockingQueue (阻塞队列) 特性
 
-# 22. AtomicInteger底层实现原理是什么？如何在自己的产品代码中应用CAS操作？
+生产者-消费者场景可以利用 BlockingQueue 的等待机制来实现.
+
+```java
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+public class ConsumerProducer {
+    public static final String EXIT_MSG  = "Good bye!";
+    public static void main(String[] args) {
+        BlockingQueue<String> queue = new ArrayBlockingQueue<>(3);
+        Producer producer = new Producer(queue);
+        Consumer consumer = new Consumer(queue);
+        new Thread(producer).start(); // 生产者
+        new Thread(consumer).start(); // 消费者
+    }
+    static class Producer implements Runnable {
+        private BlockingQueue<String> queue;
+        public Producer(BlockingQueue<String> q) {
+            this.queue = q;
+        }
+        @Override
+        public void run() {
+            for (int i = 0; i < 20; i++) {
+                try{
+                    Thread.sleep(5L);
+                    String msg = "Message" + i;
+                    System.out.println("Produced new item: " + msg);
+                    queue.put(msg); // 生产者线程产出消息(放入阻塞队列)
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                System.out.println("Time to say good bye!");
+                queue.put(EXIT_MSG);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static class Consumer implements Runnable{
+        private BlockingQueue<String> queue;
+        public Consumer(BlockingQueue<String> q){
+            this.queue=q;
+        }
+        @Override
+        public void run() {
+            try{
+                String msg;
+                // 消费者线程一旦从阻塞队列中取出消息(由生产者线程放入) 立即处理
+                while(!EXIT_MSG.equalsIgnoreCase( (msg = queue.take()))){
+                    System.out.println("Consumed item: " + msg);
+                    Thread.sleep(10L);
+                }
+                System.out.println("Got exit message, bye!");
+            }catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
+
+# 21. Java 并发类库提供的线程池有哪几种？分别有什么特点？
+
+# 22. AtomicInteger 底层实现原理是什么？如何在自己的产品代码中应用 CAS 操作？
 
 # 23. 类加载过程；双亲委派模型
 
@@ -272,7 +379,7 @@ java.util.concurrent 及其子包提供了：
 
 # 33. 后台服务出现明显“变慢”，谈谈你的诊断思路？
 
-# 34. 如何看待“Lambda能让Java程序慢30倍”这一说法？
+# 34. 如何看待“Lambda 能让 Java 程序慢 30 倍”这一说法？
 
 # 35. JVM 如何优化 Java 代码？
 
@@ -280,6 +387,6 @@ java.util.concurrent 及其子包提供了：
 
 # 37. Spring Bean 的生命周期和作用域
 
-# 38. 对比Java标准NIO类库，Netty 如何实现更高性能？
+# 38. 对比 Java 标准 NIO 类库，Netty 如何实现更高性能？
 
 # 39. 常用的分布式 ID 的设计方案；Snowflake 是否受冬令时切换影响？

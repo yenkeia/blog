@@ -5,8 +5,6 @@ draft: false
 tags:
   - C/C++
   - JavaScript
-categories:
-  - 笔记
 ---
 
 ## 什么是 V8?

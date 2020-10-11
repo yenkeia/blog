@@ -2,12 +2,8 @@
 title: "Linux配置静态IP"
 date: 2019-12-24T17:56:08+08:00
 draft: false
-# keywords:
-#   -
 tags: 
   - Linux
-categories:
-  - 笔记
 ---
 
 #### CentOS 8

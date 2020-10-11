@@ -4,8 +4,6 @@ date: 2018-11-27T05:19:56+08:00
 draft: false
 tags:
   - Java
-categories:
-  - 编程语言
 ---
 
 极客时间[深入拆解 Java 虚拟机](https://time.geekbang.org/column/108)

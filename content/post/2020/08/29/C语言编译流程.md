@@ -2,12 +2,8 @@
 title: "C语言编译流程"
 date: 2020-08-29T13:54:50+08:00
 draft: false
-# keywords:
-#   -
 tags:
   - C/C++
-categories:
-  - 编程语言
 ---
 
 ## GCC

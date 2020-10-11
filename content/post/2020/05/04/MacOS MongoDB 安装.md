@@ -4,8 +4,6 @@ date: 2020-05-04T23:32:07+08:00
 draft: false
 tags:
   - MongoDB
-categories:
-  - 其他
 ---
 
 ## Ubuntu Server 16.04 安装 MongoDB

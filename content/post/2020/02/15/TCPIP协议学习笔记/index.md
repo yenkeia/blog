@@ -2,13 +2,9 @@
 title: "TCP/IP协议学习笔记"
 date: 2020-02-15T17:50:41+08:00
 draft: false
-# keywords:
-#   -
 tags: 
   - TCPIP
   - 网络编程
-categories:
-  - 笔记
 ---
 - << 图解TCP/IP(第五版) >>
 - << TCP/IP经典入门(第五版) >>

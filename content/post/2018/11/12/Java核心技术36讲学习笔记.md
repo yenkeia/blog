@@ -4,8 +4,6 @@ date: 2018-11-12T23:13:20+08:00
 draft: false
 tags:
   - Java
-categories:
-  - 编程语言
 ---
 
 ## 1. 谈谈你对 Java 平台的理解

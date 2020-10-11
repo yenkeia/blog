@@ -2,12 +2,8 @@
 title: "JavaScript原型笔记"
 date: 2020-05-08T19:53:51+08:00
 draft: false
-# keywords:
-#   -
 tags:
   - JavaScript
-categories:
-  - 编程语言
 ---
 
 ## 0. 对象 (object) 和实例 (instance)

@@ -2,14 +2,10 @@
 title: "Go、Linux、C++书单"
 date: 2020-03-05T14:46:01+08:00
 draft: true
-# keywords:
-#   -
 tags: 
   - Go
   - C++
   - Linux
-categories:
-  - 编程语言
 ---
 
 Linux

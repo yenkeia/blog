@@ -4,8 +4,6 @@ date: 2018-12-04T06:37:46+08:00
 draft: false
 tags:
   - Java
-categories:
-  - 编程语言
 ---
 
 ## 自我介绍、项目经历、技术栈

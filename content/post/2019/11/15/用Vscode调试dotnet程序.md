@@ -2,12 +2,8 @@
 title: "用Vscode调试dotnet程序"
 date: 2019-11-15T17:59:15+08:00
 draft: false
-# keywords:
-#   -
 tags: 
   - C#
-categories:
-  - 其他
 ---
 
 生成 dotnet 项目

@@ -6,8 +6,6 @@ tags:
   - C/C++
   - 游戏
   - SFML
-categories:
-  - 笔记
 ---
 
 ## 介绍

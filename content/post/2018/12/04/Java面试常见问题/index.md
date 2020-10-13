@@ -148,11 +148,19 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## 索引是如何提高查询速度的
 
+索引多为树状结构, 在写入数据时就已经排好序, 因此查询时可以用二分查找等高效率的算法.
+
 ## 使用索引的注意事项
 
 索引的好处:
 
+- 提高检索效率, 降低检索过程中需要读取的数据量.
+- 降低数据的排序成本.
+
 索引的弊端:
+
+- 索引是独立于基础数据之外的一部分数据, 因此每次更新数据都会带来额外的 IO 量和计算量.
+- 索引还会带来存储空间资源的消耗
 
 ## 如何判断是否要创建索引
 
@@ -181,8 +189,6 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## 网关能为后端服务带来哪些好处
 
-## consul 的机制以及和其他注册中心的对比
-
 ## Spring Boot 除了自动配置，相比 Spring 有什么区别
 
 ## 对 Spring Cloud 的了解
@@ -209,15 +215,13 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## TCP 和 UDP 的区别; TCP 传输过程中怎么做到可靠的
 
-## 说说排序算法
-
 ## 如何查找一个数组的中位数
 
 ## 反射的机制
 
 ## Object 类中的方法
 
-## hashmap put 方法存放时如何判断是否重复
+## HashMap put 方法存放时如何判断是否重复
 
 ## 如果存取相同的数据, ArrayList 和 LinkedList 谁占用空间大
 
@@ -245,7 +249,7 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## volatile 的原子性问题; 为什么 i++ 不支持原子性 (从计算机原理角度说明)
 
-## happens before 原理
+## happens-before 原理
 
 ## CAS 操作
 
@@ -261,7 +265,7 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## SQL having 使用场景
 
-## 前端浏览器地址的一个 http 请求到后端整个流程是怎样的
+## 前端浏览器地址的一个 HTTP 请求到后端整个流程是怎样的
 
 ## git rebase、git merge 作用
 
@@ -299,15 +303,13 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## 一致性 Hash 算法
 
-## get 和 post 的区别
+## GET 和 POST 的区别
 
 ## HTTP 请求和响应的全过程
 
-## forward 和 redirect 的区别
+## OSI 七层模型
 
-## osi 七层模型
-
-## tcp/ip 四层模型及原理
+## TCP/IP 四层模型及原理
 
 ## 容量控制, 拥塞控制
 
@@ -334,10 +336,6 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 ## 从一张大表读取数据, 如何解决性能问题
 
 ## 内连接, 左连接, 右连接作用及区别
-
-## Statement 和 PreparedStatement 之间的区别
-
-## 索引以及索引的实现 (B+ 树和 B 树, R 树区别)
 
 ## 什么是数据库连接池
 
@@ -409,7 +407,7 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## 如何停止一个线程?
 
-## 什么是线程安全?
+## 什么是线程安全
 
 ## synchronized 和 lock 的区别
 
@@ -457,11 +455,7 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 
 ## `String s = new String("s")` 创建了几个对象
 
-## JSP 的动态 include 和静态 include
-
 ## web.xml 中常用配置及作用
-
-## Servlet 的线程安全问题
 
 ## 什么是 MVC
 
@@ -470,8 +464,6 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 ## HTTP 请求中 session 实现原理?
 
 ## 如果客户端禁止 Cookie 能实现 Session 吗?
-
-## get 和 post 区别
 
 ## 常见的 web 请求返回的状态码
 
@@ -482,8 +474,6 @@ MySQL 中主要有 4 种类型的索引: B-Tree 索引, Hash 索引, Fulltext �
 ## Spring 四种依赖注入方式
 
 ## 什么是 web 服务器, 什么是应用服务器, 常用的 web 服务器有哪些
-
-## Tomcat 和 weblogic 的区别
 
 ## 什么是 SQL 注入, XSS 攻击, CSRF 攻击, 如何避免
 

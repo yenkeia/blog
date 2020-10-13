@@ -105,11 +105,28 @@ TODO ReentrantLock
 
 ## 转发（Forward）和重定向（Redirect）的区别
 
-## TCP 三次握手和四次挥手
+转发是服务器行为.
+
+重定向是客户端行为.
+如果 web 服务器返回给客户端的 HTTP 状态码是 301(永久跳转) 或者 302(临时跳转), 则客户端浏览器就能通过 Response Headers 的 Location 字段拿到重定向的 URL 进行跳转.
+
+## TCP 三次握手和四次挥手具体过程
+
+TCP 是基于字节流的通信协议
+
+三次握手:
+![三次握手](./三次握手.png)
+
+四次挥手:
+![四次挥手](./四次挥手.png)
 
 ## IP 地址与 MAC 地址的区别
 
-## HTTP 请求、响应报文格式
+IP 地址是指 (Internet Protocol address), 术语叫互联网协议地址, 而 MAC 地址是指 (Media Access Control Address), 直译为媒体访问控制地址, 或物理地址 (Physical Address), 每个可以连接到以太网 (Ethernet) 的设备必须有一个 MAC 地址.
+
+参考: [知乎 - IP 地址和 MAC 地址的区别和联系是什么](https://www.zhihu.com/question/49335649)
+
+## HTTP 请求, 响应报文格式
 
 ## 为什么要使用索引?
 

@@ -63,8 +63,9 @@ void *thread_function(void *arg)
 }
 /* 程序输出:
 waiting for thread to finish.
+(线程开始执行)
 thread_function is running. argument was hello world
-(阻塞等待3秒后)
+(3秒后)
 thread joined, it returned thread_function finished.
 message is now bye!
 /*

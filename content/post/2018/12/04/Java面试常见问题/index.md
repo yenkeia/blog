@@ -128,9 +128,9 @@ IP 地址是指 (Internet Protocol address), 术语叫互联网协议地址, 而
 
 ## HTTP 请求, 响应报文格式
 
-## 为什么要使用索引?
+## 为什么要使用索引
 
-## 索引这么多优点, 为什么不对表中的每一个列创建一个索引呢?
+## 索引这么多优点, 为什么不对表中的每一个列创建一个索引
 
 ## 索引是如何提高查询速度的
 
@@ -156,15 +156,15 @@ IP 地址是指 (Internet Protocol address), 术语叫互联网协议地址, 而
 
 ## consul 的机制以及和其他注册中心的对比
 
-## Spring Boot 除了自动配置，相比传统的 Spring 有什么其他的区别？
+## Spring Boot 除了自动配置，相比 Spring 有什么区别
 
-## Spring Cloud 有了解多少？
+## 对 Spring Cloud 的了解
 
 ## Spring Bean 的生命周期
 
 ## HashMap 和 HashTable 的区别
 
-## Object 的 hashcode 方法重写了, equals 方法要不要重写?
+## Object 的 hashcode 方法重写了, 是否需要重写 equals 方法
 
 ## HashMap 线程不安全的出现场景
 
@@ -430,14 +430,6 @@ IP 地址是指 (Internet Protocol address), 术语叫互联网协议地址, 而
 
 ## `String s = new String("s")` 创建了几个对象
 
-## JSP 和 Servlet 的区别, Servelt 的概念
-
-## Servlet 的生命周期
-
-## Servlet 中的 session 工作原理, 以及设置过期时间的方式
-
-## Servlet 中, filter 的应用场景有哪些?
-
 ## JSP 的动态 include 和静态 include
 
 ## web.xml 中常用配置及作用
@@ -453,8 +445,6 @@ IP 地址是指 (Internet Protocol address), 术语叫互联网协议地址, 而
 ## 如果客户端禁止 Cookie 能实现 Session 吗?
 
 ## get 和 post 区别
-
-## redirect 与 forward 的区别
 
 ## 常见的 web 请求返回的状态码
 
@@ -476,7 +466,7 @@ IP 地址是指 (Internet Protocol address), 术语叫互联网协议地址, 而
 
 ## Ajax 如何解决跨域问题
 
-## 谈一下自己了解或者熟悉的设计模式
+## 列举常见的设计模式
 
 ## 单例 (Singleton) 的几种实现方式, 实现一个线程安全的单例
 

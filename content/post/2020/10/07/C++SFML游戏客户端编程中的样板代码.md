@@ -41,11 +41,11 @@ void Application::run()
 
 ## 代码命名规则
 
-类成员变量以 `m` 开头, 如: `mWindow`, `mIsMovingUp`. 类成员函数(方法)以小写开头: `update()`, 类静态变量及静态函数以大写开头: `PlayerSpeed`, 和 Java 驼峰命名一致.
+类成员变量以 `m` 开头, 如: `mWindow`, `mIsMovingUp`. 类成员函数(方法)以小写开头: `update()`, 类静态变量及静态函数以大写开头: PlayerSpeed, 和 Java 驼峰命名一致.
 
 ## 资源加载
 
-资源加载一般在程序入口 `Application`(也叫`Game`) 类初始化时一同初始化.
+资源加载一般在程序入口 Application (也叫 Game) 类初始化时一同初始化.
 
 ```cpp
 // Application.h
@@ -71,7 +71,7 @@ Application::Application()
 }
 ```
 
-`TextureHolder`, `FontHolder` 在 `ResourceHolder.hpp` 中定义:
+TextureHolder, FontHolder 在 ResourceHolder.hpp 中定义:
 
 ```cpp
 // ResourceHolder.hpp
@@ -105,7 +105,7 @@ namespace Textures
 }
 ```
 
-在 `Application` 初始化时候, 调用 `TextureHolder`(也就是`ResourceHolder`) 的 `load` 方法加载素材并存入 `mResourceMap`:
+在 Application 初始化时候, 调用 TextureHolder (也就是 ResourceHolder) 的 `load` 方法加载素材并存入 mResourceMap:
 
 ```cpp
 mTextures.load(Textures::TitleScreen, "Media/Textures/TitleScreen.png");

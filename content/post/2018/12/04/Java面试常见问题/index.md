@@ -247,11 +247,23 @@ HashMap 不是线程安全的.
 
 ## Object 的 hashcode 方法重写了, 是否需要重写 equals 方法
 
-TODO
+Java 中 `a == b` 比较是否对同一个对象的引用,
+`a == b` 为 true 说明 a 和 b 引用的是同一个对象.
+`a.equals(b)` 为 true 说明可以认为 a 和 b 有相同的值, 但是 a b 未必引用的是同一个对象.
+
+根据 Object 规范:
+
+1. 如果没有修改 equals 方法中用以比较的信息, 在应用程序的一次执行过程中对一个对象重复调用
+   hashCode 方法时, 它必须始终返回相同的值. 在应用程序的多次执行过程中, 每个执行过程在该
+   对象上获取的结果值可以不相同.
+2. 如果两个对象根据 equals(Object) 方法比较是相等的, 那么在两个对象上调用 hashCode 就必须产
+   生的结果是相同的整数.
+
+参考: <<Effective Java>>
 
 ## HashMap 线程不安全的出现场景
 
-TODO
+参考: [hashmap 的线程不安全体现在哪里?](https://www.zhihu.com/question/28516433)
 
 ## 线上 CPU 很高的解决方法, 如何找到问题
 

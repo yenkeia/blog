@@ -174,9 +174,190 @@ thread joined
 
 ### 用互斥量进行同步
 
+为了控制对关键代码的访问, 必须在进入这段代码之前锁住一个互斥量, 然后在完成操作之后解锁它.
+
+下面的实例代码只是演示互斥量怎么用, 并不是最佳实践, 在实际编程中应该避免用轮询来获得结果.
+
+```cpp
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <pthread.h>
+#include <semaphore.h>
+void *thread_function(void *arg);
+pthread_mutex_t work_mutex; // 声明一个互斥量
+#define WORK_SIZE 1024
+char work_area[WORK_SIZE];  // 工作区
+int time_to_exit = 0;
+int main()
+{
+    int res;
+    pthread_t a_thread;
+    void *thread_result;
+    // 初始化互斥量
+    res = pthread_mutex_init(&work_mutex, NULL);
+    if (res != 0)
+    {
+        perror("mutex initialization failed");
+        exit(EXIT_FAILURE);
+    }
+    // 启动新线程
+    res = pthread_create(&a_thread, NULL, thread_function, NULL);
+    if (res != 0)
+    {
+        perror("thread creation failed");
+        exit(EXIT_FAILURE);
+    }
+    // 主线程先给工作区(work_area字符数组)加锁, 读入文本到它里面
+    pthread_mutex_lock(&work_mutex);
+    printf("input some text. enter 'end' to finish\n");
+    while (!time_to_exit)
+    {
+        fgets(work_area, WORK_SIZE, stdin);
+        // 然后解锁允许其他线程对它访问(统计字符串长度)
+        pthread_mutex_unlock(&work_mutex);
+        while (1)
+        {
+            // 周期性对互斥量再加锁, 检查字符串数目是否已经统计完成(另一个线程).
+            pthread_mutex_lock(&work_mutex);
+            if (work_area[0] != '\0')
+            {
+                // 如果还需要等待(用户没有输入 end, 第一个元素就不为 \0 null)
+                // 则释放互斥量
+                pthread_mutex_unlock(&work_mutex);
+                sleep(1);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+    pthread_mutex_unlock(&work_mutex);
+    printf("\nwaiting for thread to finish.\n");
+    res = pthread_join(a_thread, &thread_result);
+    if (res != 0)
+    {
+        perror("thread join failed");
+        exit(EXIT_FAILURE);
+    }
+    printf("thread joined\n");
+    pthread_mutex_destroy(&work_mutex);
+    exit(EXIT_SUCCESS);
+}
+// 新线程中执行的函数
+void *thread_function(void *arg)
+{
+    sleep(1);
+    // 新线程首先试图对互斥量加锁, 如果它已经被锁住, 这个调用将被阻塞直到互斥量被释放.
+    pthread_mutex_lock(&work_mutex);
+    // 获得访问权
+    // 如果用户不输入 end 则进入循环
+    while (strncmp("end", work_area, 3) != 0)
+    {
+        printf("you input %d characters\n", strlen(work_area) - 1);
+        work_area[0] = '\0';    // 用第一个字符设置为 null 的方法通知已经完成统计
+        pthread_mutex_unlock(&work_mutex);
+        sleep(1);
+        pthread_mutex_lock(&work_mutex);
+        while (work_area[0] == '\0')
+        {
+            pthread_mutex_unlock(&work_mutex);
+            sleep(1);
+            pthread_mutex_lock(&work_mutex);
+        }
+    }
+    // 如果用户输入 end 则退出上面的循环,
+    // 将工作区 work_area (就是用来存屏幕输入的字符数组) 的第一个字符设置为 \0 (null)
+    time_to_exit = 1;
+    work_area[0] = '\0';
+    pthread_mutex_unlock(&work_mutex);
+    pthread_exit(0);
+}
+```
+
 ## 线程的属性
 
 TODO
+
+## 多线程
+
+在一个程序中创建多个线程, 然后又以不同于其启动的顺序将他们合并到一起.
+
+```cpp
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <pthread.h>
+#define NUM_THREADS 6
+void *thread_function(void *arg);
+int main()
+{
+    int res;
+    pthread_t a_thread[NUM_THREADS];
+    void *thread_result;
+    int lots_of_threads;
+    for (lots_of_threads = 0; lots_of_threads < NUM_THREADS; lots_of_threads++)
+    {
+        res = pthread_create(&(a_thread[lots_of_threads]), NULL, thread_function, (void *)lots_of_threads);
+        if (res != 0)
+        {
+            perror("thread creation failed");
+            exit(EXIT_FAILURE);
+        }
+        // sleep(1);
+    }
+    printf("waiting for threads to finish.\n");
+    for (lots_of_threads = NUM_THREADS - 1; lots_of_threads >= 0; lots_of_threads--)
+    {
+        res = pthread_join(a_thread[lots_of_threads], &thread_result);
+        if (res == 0)
+        {
+            printf("picked up a thread\n");
+        }
+        else
+        {
+            perror("pthread_join failed");
+        }
+    }
+    printf("all done\n");
+    exit(EXIT_SUCCESS);
+}
+
+void *thread_function(void *arg)
+{
+    int my_number = (int)arg;
+    int rand_num;
+    printf("thread_function is running. argument was %d\n", my_number);
+    rand_num = 1 + (int)(9.0 * rand() / (RAND_MAX + 1.0));
+    sleep(rand_num);
+    printf("bye from %d\n", my_number);
+    pthread_exit(NULL);
+}
+/*
+thread_function is running. argument was 0
+thread_function is running. argument was 3
+thread_function is running. argument was 4
+thread_function is running. argument was 1
+thread_function is running. argument was 2
+waiting for threads to finish.
+thread_function is running. argument was 5
+bye from 5
+picked up a thread
+bye from 3
+bye from 0
+bye from 4
+bye from 1
+picked up a thread
+picked up a thread
+bye from 2
+picked up a thread
+picked up a thread
+picked up a thread
+all done
+*/
+```
 
 ## 参考
 

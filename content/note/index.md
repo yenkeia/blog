@@ -239,3 +239,13 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 
 - cat /etc/group |grep wireshark
 - sudo usermod -a -G wireshark \$USER 把当前用户加到 wireshark 用户组
+
+## systemctl
+
+```shell
+# ssh.service (aliased as sshd.service)
+sudo systemctl start ssh # 开启服务
+sudo systemctl stop ssh # 关闭服务
+sudo systemctl disable ssh # 禁止开机自动启动
+sudo systemctl enable ssh # 允许开机自动启动
+```

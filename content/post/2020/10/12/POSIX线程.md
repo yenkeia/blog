@@ -81,7 +81,98 @@ message is now bye!
 
 ## 线程的同步, 信号量, 互斥量
 
-TODO
+### 用信号量进行同步
+
+- 二进制信号量, 只有 0 和 1 两种取值, 一般常用来保护一段代码使其每次只能被一个执行线程运行.
+
+- 计数信号量, 允许有限数目的线程执行一段指定的代码
+
+计数信号量仅仅是二进制信号量的一种逻辑拓展, 两者实际调用的函数都一样.
+
+```cpp
+// 使用信号量同步
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <pthread.h>
+#include <semaphore.h>
+void *thread_function(void *arg);
+sem_t bin_sem;
+#define WORK_SIZE 1024
+char work_area[WORK_SIZE];
+int main()
+{
+    int res;
+    pthread_t a_thread;
+    void *thread_result;
+    // 初始化由 sem 指向的信号量对象, 设置它的共享选项, 并给它一个初始的整数值 0
+    res = sem_init(&bin_sem, 0, 0);
+    if (res != 0)
+    {
+        perror("semaphore initialization failed");
+        exit(EXIT_FAILURE);
+    }
+    res = pthread_create(&a_thread, NULL, thread_function, NULL);
+    if (res != 0)
+    {
+        perror("thread creation failed");
+        exit(EXIT_FAILURE);
+    }
+    // 从键盘读取一些文本并把它们放到工作区 work_area 数组中, 然后调用 sem_post 增加信号量的值.
+    // 另一个线程此时已经调用 sem_wait 阻塞, sem_post 令另一个线程从 sem_wait 的等待中返回并开始执行.
+    // 在统计完字符个数后, 它(另一个线程)再次调用 sem_wait 并再次阻塞, 直到主线程再次调用 sem_post 增加信号量的值.
+    printf("input some text. enter 'end' to finish.\n");
+    while (strncmp("end", work_area, 3) != 0)
+    {
+        fgets(work_area, WORK_SIZE, stdin);
+        // sem_post 的作用是以原子操作的方式给信号量的值加 1
+        sem_post(&bin_sem);
+    }
+    // 在新线程中调用 sem_wait 等待信号量, 然后统计输入的字符个数
+    printf("\nwaiting for thread to finish.\n");
+    res = pthread_join(a_thread, &thread_result);
+    if (res != 0)
+    {
+        perror("thread join failed");
+        exit(EXIT_FAILURE);
+    }
+    printf("thread joined\n");
+    sem_destroy(&bin_sem);
+    exit(EXIT_SUCCESS);
+}
+// 在新线程中调用 sem_wait 等待信号量, 然后统计输入的字符个数
+// sem_wait 会等待直到信号量有个非零值才会减 1
+// 如果对值为 0 的信号量调用 sem_wait, 这个函数会等待(阻塞), 直到有其他线程增加了该信号量的值使其不再是 0 为止
+void *thread_function(void *arg)
+{
+    sem_wait(&bin_sem);
+    while (strncmp("end", work_area, 3) != 0)
+    {
+        printf("you input %d characters\n", strlen(work_area) - 1);
+        sem_wait(&bin_sem);
+    }
+    pthread_exit(NULL);
+}
+/*
+gcc -D_REENTRANT thread3.c -lpthread
+./a.out
+
+input some text. enter 'end' to finish.
+asdfgh
+you input 6 characters
+aaa
+you input 3 characters
+asdf
+you input 4 characters
+end
+
+waiting for thread to finish.
+thread joined
+*/
+```
+
+### 用互斥量进行同步
 
 ## 线程的属性
 

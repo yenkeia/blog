@@ -569,6 +569,10 @@ TODO
 
 MySQL 常用存储引擎有: InnoDB, MyISAM
 
+MyISAM:
+
+- 只支持表级锁
+
 InnoDB:
 
 - 支持事务, 是 MySQL 最流行的存储引擎
@@ -733,7 +737,7 @@ TODO
 
 ## 启动一个线程是用 run() 还是 start()?
 
-TODO
+调用 start() 方法会创建一个新的子线程并启动, run() 方法只是 Thread 的一个普通方法调用.
 
 ## wait 和 sleep 的区别
 

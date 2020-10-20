@@ -185,6 +185,24 @@ TODO
 
 TODO
 
+## Spring Boot
+
+特性:
+
+- 方便地创建可独立运行的 Spring 应用程序
+- 直接内嵌 Tomcat, Jetty 或 Undertow
+- 简化了项目的构建配置
+- 为 Spring 及第三方库提供自动配置
+- 提供生产级特性
+- 无需生成代码或进行 XML 配置
+
+核心:
+
+- 自动配置 Auto Configuration
+- 起步依赖 Starter Dependency
+- 命令行界面 Spring Boot CLI (很少用)
+- Actuator (生产特性, 比如监控)
+
 ## 对 Spring Cloud 的了解
 
 Spring Cloud 是一套微服务开发和治理框架, 包含了微服务运行的功能, 比如远程过程调用(RPC), 动态服务发现, 负载均衡, 限流等.

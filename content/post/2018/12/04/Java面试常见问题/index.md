@@ -201,7 +201,7 @@ TODO
 - 自动配置 Auto Configuration
 - 起步依赖 Starter Dependency
 - 命令行界面 Spring Boot CLI (很少用)
-- Actuator (生产特性, 比如监控)
+- Actuator (运维相关内容, 生产特性, 比如监控)
 
 ## 对 Spring Cloud 的了解
 

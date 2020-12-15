@@ -85,7 +85,7 @@ wg set wg0 private-key ./private
 ip link set wg0 up
 ```
 
-使用 `ip addr` 命令查看所有网络信息, 得到 vm01, vm02 的 eth0 网卡分配到的 ipv4 地址分别为 10.211.55.10, 10.211.55.11 并且互相能 ping 通, 还能看到 wg0 网卡信息.
+使用 `ip addr` 命令查看所有网络接口, 得到 vm01, vm02 的 eth0 网卡分配到的 ipv4 地址分别为 10.211.55.10, 10.211.55.11 并且互相能 ping 通, 还能看到 wg0 网卡信息.
 
 使用 `wg` 命令查看 WireGuard 信息
 
@@ -122,6 +122,10 @@ ping 10.0.0.1
 
 再次用 `wg` 命令发现 peer 的 lasted handshake 有信息即配置 wireguard 完成.
 
+## 使用 wg-quick
+
+TODO
+
 ## 一些有用的命令
 
 查看配置好的网络情况 `ip a | grep eth0`
@@ -143,3 +147,4 @@ default via 10.211.55.1 dev eth0 proto dhcp metric 100
 
 - [网关和路由器的区别是什么？](https://www.zhihu.com/question/21787311)
 - [Linux 下配置多网卡多网关](https://www.hi-linux.com/posts/64963.html)
+- [IP 地址是主机的还是网卡的 ?](https://segmentfault.com/a/1190000020031911)

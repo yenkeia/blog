@@ -143,8 +143,176 @@ default via 10.211.55.1 dev eth0 proto dhcp metric 100
 192.168.122.0/24 dev virbr0 proto kernel scope link src 192.168.122.1
 ```
 
+## 三台机器互联
+
+需求: 假设有 A B C 三台机器, 要实现 A(client) -> B(server&client) -> C(server)
+
+实现:
+
+0. 关闭 CentOS 7 的防火墙
+
+   ```bash
+   systemctl stop firewalld.service
+   ```
+
+1. 三台机器都生成秘钥
+
+   ```bash
+    cd /etc/wireguard
+    wg genkey > private.key # 生成私钥
+    wg pubkey < ./private.key > public.key  # 通过私钥生成公钥
+   ```
+
+2. 配置 A(client)
+
+   新建网卡
+
+   ```bash
+    ip link add dev wg0-client type wireguard # wg0-client 为网卡名
+    ip addr add dev wg0-client 10.1.0.1/24 # 设置 10.1.x.x 网段下的 IP
+    ip link set wg0-client up # 启动网卡
+   ```
+
+   新建 wg0-client.conf, 内容:
+
+   ```plain
+    [Interface]
+    ListenPort = 11111
+    PrivateKey = <A的秘钥>
+
+    [Peer]
+    PublicKey = <B的公钥>
+    AllowedIPs = 0.0.0.0/0
+    Endpoint = <B的eth0网卡IP>:<B的wg0-server.conf写的ListenPort,即22222>
+    PersistentKeepalive = 15
+   ```
+
+   使用 wg0-client.conf 这个配置
+
+   ```bash
+    wg setconf wg0-client ./wg0-client.conf
+   ```
+
+3. 配置 B(server)
+
+   新建网卡
+
+   ```bash
+    ip link add dev wg0-server type wireguard
+    ip addr add dev wg0-server 10.1.0.2/24 # 设置 10.1.x.x 网段下的 IP
+    ip link set wg0-server up
+   ```
+
+   新建 wg0-server.conf, 内容:
+
+   ```plain
+    [Interface]
+    ListenPort = 22222
+    PrivateKey = <B的秘钥>
+
+    [Peer]
+    PublicKey = <A的公钥>
+    AllowedIPs = 0.0.0.0/0
+    Endpoint = <A的eth0网卡IP>:<A的wg0-client.conf写的ListenPort, 即11111>
+    PersistentKeepalive = 15
+   ```
+
+   使用 wg0-server.conf 这个配置
+
+   ```bash
+    wg setconf wg0-server ./wg0-server.conf
+   ```
+
+4. 测试 A -> B 可以连通
+
+   ```bash
+    # A
+    ping 10.1.0.2
+    # B
+    tcpdump -i wg0-server
+   ```
+
+   能看到 A 正常 ping 通, B tcpdump 有 request / reply, 反之也可以连通
+
+5. 配置 B(client)
+
+   新建网卡
+
+   ```bash
+    ip link add dev wg1-client type wireguard
+    ip addr add dev wg1-client 10.2.0.1/24 # !!! 注意这是新的网段 10.2.x.x 下的 IP
+    ip link set wg1-client up # 启动作为客户端的网卡
+   ```
+
+   新建 wg1-client.conf, 内容:
+
+   ```plain
+    [Interface]
+    ListenPort = 23333
+    PrivateKey = <B的秘钥>
+
+    [Peer]
+    PublicKey = <C的公钥>
+    AllowedIPs = 0.0.0.0/0
+    Endpoint = <C的eth0网卡IP>:<C的wg0-server.conf写的ListenPort,即33333>
+    PersistentKeepalive = 15
+   ```
+
+   使用 wg1-client.conf 这个配置
+
+   ```bash
+    wg setconf wg1-client ./wg1-client.conf
+   ```
+
+6. 配置 C(server)
+
+   新建网卡
+
+   ```bash
+    ip link add dev wg0-server type wireguard
+    ip addr add dev wg0-server 10.2.0.2/24 # 设置 10.2.x.x 网段下的 IP
+    ip link set wg0-server up
+   ```
+
+   新建 wg0-server.conf, 内容:
+
+   ```plain
+    [Interface]
+    ListenPort = 33333
+    PrivateKey = <C的秘钥>
+
+    [Peer]
+    PublicKey = <B的公钥>
+    AllowedIPs = 0.0.0.0/0
+    Endpoint = <B的eth0网卡IP>:<B的wg1-client.conf写的ListenPort, 即23333>
+    PersistentKeepalive = 15
+   ```
+
+   使用 wg0-server.conf 这个配置
+
+   ```bash
+    wg setconf wg0-server ./wg0-server.conf
+   ```
+
+7. 测试 B -> C 可以连通
+
+8. 实现 A -> C
+
+   设置 A:
+
+   ```bash
+    ip route add <C所在的网段即10.2.0.0>/24 via <wg0-server网卡的ipv4地址>
+   ```
+
+   设置 C:
+
+   ```bash
+    ip route add <A所在的网段即10.1.0.0>/24 via <wg1-client网卡的ipv4地址>
+   ```
+
 ## 参考
 
 - [网关和路由器的区别是什么？](https://www.zhihu.com/question/21787311)
 - [Linux 下配置多网卡多网关](https://www.hi-linux.com/posts/64963.html)
 - [IP 地址是主机的还是网卡的 ?](https://segmentfault.com/a/1190000020031911)
+- [WireGuard Docs](https://github.com/pirate/wireguard-docs)

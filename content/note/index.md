@@ -249,3 +249,8 @@ sudo systemctl stop ssh # 关闭服务
 sudo systemctl disable ssh # 禁止开机自动启动
 sudo systemctl enable ssh # 允许开机自动启动
 ```
+
+## Parallets
+
+- [Ubuntu 18.04 gets duplicate DHCP address on Parallels](https://github.com/chef/bento/issues/1062)
+- [Is it OK to change /etc/machine-id?](https://unix.stackexchange.com/questions/402999/is-it-ok-to-change-etc-machine-id)

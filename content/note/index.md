@@ -252,5 +252,11 @@ sudo systemctl enable ssh # 允许开机自动启动
 
 ## Parallets
 
+```shell
+hostnamectl set-hostname vmus02-server
+rm -f /etc/machine-id
+dbus-uuidgen --ensure=/etc/machine-id
+```
+
 - [Ubuntu 18.04 gets duplicate DHCP address on Parallels](https://github.com/chef/bento/issues/1062)
 - [Is it OK to change /etc/machine-id?](https://unix.stackexchange.com/questions/402999/is-it-ok-to-change-etc-machine-id)

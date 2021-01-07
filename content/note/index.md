@@ -147,6 +147,13 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 
 ## vscode golang
 
+```json
+// -count=1 刷缓存
+// -v 显示 fmt 信息
+"go.testFlags": ["-v", "-count=1"],
+"go.testTimeout": "300s"
+```
+
 - 测试用例 t.Log() 输出需要在 .vscode/settings.json 加上 "go.testFlags": ["-v"]
 - F12 去到函数定义 # Ubuntu
 - Fn + F12 去到函数定义 # Macos

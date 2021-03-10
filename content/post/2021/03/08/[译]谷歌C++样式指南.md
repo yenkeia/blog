@@ -4,6 +4,7 @@ date: 2021-03-08T18:02:00+08:00
 draft: true
 tags:
   - 翻译练习
+  - C++
 ---
 
 > 原文地址: [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)

@@ -1,5 +1,5 @@
 ---
-title: "[译]Effective Modern CMake"
+title: "[译] Effective Modern CMake"
 date: 2021-03-10T09:04:35+08:00
 draft: true
 tags:

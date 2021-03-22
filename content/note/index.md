@@ -34,6 +34,11 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - GRANT ALL ON _._ TO 'root'@'%';
 - FLUSH PRIVILEGES;
 
+## mycli
+
+- key_bindings = vi
+- 不将结果输出到 less 而是直接输出: enable_pager = False
+
 ## ubuntu 18.04 快捷键
 
 - Ctrl + Tab Chrome 切换到右边的 tab

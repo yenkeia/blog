@@ -110,6 +110,9 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - df -h 文件系统磁盘空间使用情况
 - umount /media/sdb 不挂载设备
 - eject 弹出设备 (lsblk -> disk
+- 新建用户: adduser testuser
+- 为用户新增 sudo 权限: usermod -aG sudo testuser
+- 查看用户是否有 sudo 权限: grep '^sudo' /etc/group
 
 ## find
 

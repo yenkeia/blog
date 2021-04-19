@@ -180,6 +180,9 @@ sudo java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=
 - .git/info/exclude 该项目本地忽略的文件
 - git remove -v 查看远程仓库
 - git checkout -b dev origin/dev 切换到 dev 分支上,接着跟远程的 origin 地址上的 dev 分支关联起来
+- 在已经 git clone 的情况下, 如果子模块还没有克隆, 可以
+  1. git submodule init
+  2. git submodule update
 
 ## mongo
 

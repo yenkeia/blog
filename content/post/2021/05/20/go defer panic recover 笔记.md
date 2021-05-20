@@ -1,12 +1,12 @@
 ---
-title: "Go defer 笔记"
+title: "Go Defer Panic Recover 笔记"
 date: 2021-05-20T17:29:45+08:00
 draft: false
 tags:
   - 日常记录
 ---
 
-### 例子
+### 例子 1
 
 可以把 `defer ...` 分成三部分:
 
@@ -35,7 +35,7 @@ func main() {
 
 这例子 `defer` 执行分为三部分:
 
-1. 调用 `defer`, 计算 *n* 的值, *n = x = 0*, 所以作为参数的 x 为 0.
+1. 调用 `defer`, 计算 _n_ 的值, _n = x = 0_, 所以作为参数的 x 为 0.
 2. 执行 `defer`, 将 `func(n int)(0)` 入栈.
 3. 在 `return 9` 之后执行 `func(n int)(0)`, n 在 `fmt.Printf("in defer x as parameter: x = %d\n", n)` 中已经被计算过了, x 在 `fmt.Printf("in defer x after return: x = %d\n", x)` 将被计算得到 9.
 
@@ -48,6 +48,10 @@ in defer x after return: x = 9
 in main: x = 9
 ```
 
+### 例子 2
+
 ### 参考资料
 
 - [Is golang defer statement execute before or after return statement?](https://stackoverflow.com/questions/52718143/is-golang-defer-statement-execute-before-or-after-return-statement)
+
+- [Defer, Panic, and Recover](https://blog.golang.org/defer-panic-and-recover)

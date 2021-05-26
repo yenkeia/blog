@@ -8,6 +8,7 @@ date: 2018-01-01
 
 - hugo new post/2019/12/24/xxx.md 将会在 blog/content/post/20 生成文件
 - zsh 下 \`命令\` + TAB 可以自动替换\`\`里面的内容. 如 \`pwd\` + TAB 会替换成当前路径
+- code-server 搜索问题: ln -s $PREFIX/bin/rg ~/.config/yarn/global/node_modules/code-server/lib/vscode/node_modules/vscode-ripgrep/bin/rg
 
 ## windows
 

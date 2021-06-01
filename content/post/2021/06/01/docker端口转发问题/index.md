@@ -35,6 +35,10 @@ docker 守护进程禁用 docker-proxy 转发端口流量, 使用宿主机 iptab
 
 ![](./03.png)
 
+## 禁用 docker-proxy 之后带来新的问题
+
+1. UDP 流量转发不了
+
 ## 参考文章
 
 1. https://stackoverflow.com/questions/37770567/why-does-docker-run-so-many-processes-to-map-ports-though-to-my-application

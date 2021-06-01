@@ -8,7 +8,7 @@ tags:
 
 ## 问题复现
 
-只使用 10 个端口时候可以启动容器成功, 当使用 99 个端口时候就启动失败..
+只使用 10 个端口时候可以启动容器成功, 当使用 100 个端口时候就启动失败..
 
 ![](./01.png)
 
@@ -27,7 +27,7 @@ docker 守护进程禁用 docker-proxy 转发端口流量, 使用宿主机 iptab
 1. 修改 /etc/docker/daemon.json: `{"userland-proxy": false}`
 2. 重启 docker 守护进程: `service docker restart`. 在部署和升级时候, 同样需要禁用 docker-proxy..
 
-禁用 docker-proxy 后使用可以使用 99 个端口正常启动容器, 并 `ps -ef` 不再有一堆 docker-proxy 进程.
+禁用 docker-proxy 后使用可以使用 100 个端口正常启动容器, 并 `ps -ef` 不再有一堆 docker-proxy 进程.
 
 ![](./03.png)
 

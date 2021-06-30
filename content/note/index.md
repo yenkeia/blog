@@ -285,3 +285,8 @@ dbus-uuidgen --ensure=/etc/machine-id
 
 - [Ubuntu 18.04 gets duplicate DHCP address on Parallels](https://github.com/chef/bento/issues/1062)
 - [Is it OK to change /etc/machine-id?](https://unix.stackexchange.com/questions/402999/is-it-ok-to-change-etc-machine-id)
+
+## htop
+
+- F5 树状显示进程关系 (可以看出父子进程)
+- shift + H 隐藏线程

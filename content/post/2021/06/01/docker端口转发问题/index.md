@@ -18,7 +18,7 @@ Error response from daemon: driver failed programming external connectivity on e
 
 ## 问题原因猜测
 
-docker 实现宿主机到容器的端口转发, 默认情况下, 是为每个端口启动一个 docker-proxy 进程来转发宿主机流量到容器对应的端口.
+docker 实现宿主机到容器的端口转发, 默认情况下, 是为每个端口启动 4 个 docker-proxy 进程来转发宿主机流量到容器对应的端口.
 
 ![](./02.png)
 

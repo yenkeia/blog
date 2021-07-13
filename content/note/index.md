@@ -292,3 +292,10 @@ dbus-uuidgen --ensure=/etc/machine-id
 
 - F5 树状显示进程关系 (可以看出父子进程)
 - shift + H 隐藏线程
+
+## k8s kubernetes
+
+```bash
+ctr -n k8s.io c ls
+runc --root /run/containerd/runc/k8s.io/ list
+```
